@@ -34,6 +34,11 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
         <!--mybatis-spring适配器 -->
         <dependency>
             <groupId>org.mybatis</groupId>

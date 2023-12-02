@@ -1,28 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!--命名空间应该是对应接口的包名+接口名 -->
-<mapper namespace="BookDAO">
-    <!--id应该是接口中的方法，结果类型如没有配置别名则应该使用全名称 -->
-    <!--获得所有图书 -->
-    <select id="getAllBooks" resultType="Book">
-        select id,title,price,publishDate from books
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.UserDAO">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.User">
+            <id property="userid" column="userId" jdbcType="INTEGER"/>
+            <result property="username" column="userName" jdbcType="VARCHAR"/>
+            <result property="userpassword" column="userPassword" jdbcType="VARCHAR"/>
+            <result property="createdat" column="createdAt" jdbcType="TIMESTAMP"/>
+            <result property="updatedat" column="updatedAt" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        userId,userName,userPassword,
+        createdAt,updatedAt
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from User
+        where  userId = #{userid,jdbcType=INTEGER} 
     </select>
-    <!--获得图书对象通过编号 -->
-    <select id="getBookById" resultType="Book">
-        select id,title,price,publishDate from books where id=#{id}
-    </select>
-    <!-- 增加 -->
-    <insert id="add">
-        insert into books(title,price,publishDate)
-        values(#{title},#{price},#{publishDate})
-    </insert>
-    <!-- 删除 -->
-    <delete id="delete">
-        delete from books where id=#{id}
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from User
+        where  userId = #{userid,jdbcType=INTEGER} 
     </delete>
-    <!-- 更新 -->
-    <update id="update">
-        update books set title=#{title},price=#{price},publishDate=#{publishDate}
-        where id=#{id}
+    <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="org.plants.po.User" useGeneratedKeys="true">
+        insert into User
+        ( userId,userName,userPassword
+        ,createdAt,updatedAt)
+        values (#{userid,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},#{userpassword,jdbcType=VARCHAR}
+        ,#{createdat,jdbcType=TIMESTAMP},#{updatedat,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="org.plants.po.User" useGeneratedKeys="true">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="userid != null">userId,</if>
+                <if test="username != null">userName,</if>
+                <if test="userpassword != null">userPassword,</if>
+                <if test="createdat != null">createdAt,</if>
+                <if test="updatedat != null">updatedAt,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="userid != null">#{userid,jdbcType=INTEGER},</if>
+                <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+                <if test="userpassword != null">#{userpassword,jdbcType=VARCHAR},</if>
+                <if test="createdat != null">#{createdat,jdbcType=TIMESTAMP},</if>
+                <if test="updatedat != null">#{updatedat,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.User">
+        update User
+        <set>
+                <if test="username != null">
+                    userName = #{username,jdbcType=VARCHAR},
+                </if>
+                <if test="userpassword != null">
+                    userPassword = #{userpassword,jdbcType=VARCHAR},
+                </if>
+                <if test="createdat != null">
+                    createdAt = #{createdat,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatedat != null">
+                    updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   userId = #{userid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.User">
+        update User
+        set 
+            userName =  #{username,jdbcType=VARCHAR},
+            userPassword =  #{userpassword,jdbcType=VARCHAR},
+            createdAt =  #{createdat,jdbcType=TIMESTAMP},
+            updatedAt =  #{updatedat,jdbcType=TIMESTAMP}
+        where   userId = #{userid,jdbcType=INTEGER} 
     </update>
 </mapper>
