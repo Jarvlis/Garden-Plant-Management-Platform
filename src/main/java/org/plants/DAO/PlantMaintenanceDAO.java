@@ -16,8 +16,8 @@ public interface PlantMaintenanceDAO {
     //养护ID查询
     PlantMaintenance selectById(int plantMaintenanceID);
     //养护人员ID查询
-    List<PlantMaintenance> selectByCreater(int plantMaintenanceID);
+    List<PlantMaintenance> selectByuserId(int userId);
     //养护植物ID查询
-    List<PlantMaintenance> selectByuserId(int plantMaintenanceID);
+    List<PlantMaintenance> selectByplantId(int plantId);
 
 }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface DistributionAreaDAO {
     int insert(DistributionArea distribution);
     int delete(int distributionId);
-    int update(int distributionId);
+    int update(DistributionArea distribution);
     //ID查询
     DistributionArea selectById(int distributionId);
     //省名查询

@@ -18,6 +18,8 @@ public interface PlantDevisionDAO {
     List<PlantDevision> selectByFamilyName(String familyName);
     //属名查找
     List<PlantDevision> selectBySpeciesName(String speciesName);
+    //种名查找
+    List<PlantDevision> selectByGenusName(String geneName);
     //别名查找
     List<PlantDevision> selectByAnotherName(String anotherName);
 
