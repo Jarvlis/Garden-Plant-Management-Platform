@@ -1,11 +1,14 @@
 package org.plants.po;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /*
 植物养护管理
  */
+@Data
 public class PlantMaintenance implements Serializable {
     private static final long serialVersionUID =1L;
     //养护任务编号

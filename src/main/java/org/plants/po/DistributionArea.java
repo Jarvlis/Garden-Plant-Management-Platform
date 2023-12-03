@@ -1,10 +1,13 @@
 package org.plants.po;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /*
 植物分类管理-分布区域
  */
+@Data
 public class DistributionArea implements Serializable {
     private static final long serialVersionUID =1L;
     //分布区域ID
