@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PlantsBasicInfoDAO">
+
+    <resultMap id="BasicInfoResultMap" type="org.plants.po.PlantsBasicInfo">
+        <id column="plantId" property="plantId" />
+        <result column="diseaseName" property="diseaseName" />
+        <result column="devisionId" property="devisionId" />
+        <result column="morphologicalFeatures" property="morphologicalFeatures" />
+        <result column="cultivationTechniques" property="cultivationTechniques" />
+        <result column="applicationValue" property="applicationValue" />
+        <!-- 嵌套 ResultMap，处理植物分类信息 -->
+        <association property="plantDevision" javaType="org.plants.po.PlantDevision">
+            <id property="DevisionID" column="DevisionID" jdbcType="INTEGER"/>
+            <result property="FamilyName" column="FamilyName" jdbcType="VARCHAR"/>
+            <result property="GenusName" column="GenusName" jdbcType="VARCHAR"/>
+            <result property="SpeciesName" column="SpeciesName" jdbcType="VARCHAR"/>
+            <result property="Anothername" column="Anothername" jdbcType="VARCHAR"/>
+            <result property="DistributionAreaID" column="DistributionAreaID" jdbcType="INTEGER"/>
+            <result property="GrowingEnvironment" column="GrowingEnvironment" jdbcType="VARCHAR"/>
+            <result property="Creator" column="Creator" jdbcType="INTEGER"/>
+            <result property="CreationTime" column="CreationTime" jdbcType="DATETIME"/>
+            <result property="UpdateTime" column="UpdateTime" jdbcType="DATETIME"/>
+        </association>
+        <!-- 嵌套 ResultMap，处理植物配图列表 -->
+        <collection property="plantImageList" ofType="org.plants.po.PlantImage">
+            <id column="imageId" property="imageId" />
+            <result column="plantId" property="plantId" />
+            <result column="imageData" property="imageData" />
+            <result column="imagePath" property="imagePath" />
+            <result column="imageLocation" property="imageLocation" />
+            <result column="imageDescribe" property="imageDescribe" />
+            <result column="photographer" property="photographer" />
+        </collection>
+    </resultMap>
+    <!-- 创建 -->
+    <insert id="addPlantsBasicInfo" parameterType="org.plants.po.PlantsBasicInfo">
+        <!-- 使用插入语句，将实体类的属性映射到数据库表的字段 -->
+        INSERT INTO PlantsBasicInfo (diseaseName, devisionId, morphologicalFeatures, cultivationTechniques, applicationValue)
+        VALUES (#{diseaseName}, #{devisionId}, #{morphologicalFeatures}, #{cultivationTechniques}, #{applicationValue})
+        <!-- 配置selectKey，告诉MyBatis获取生成的自增值 -->
+        <selectKey keyProperty="plantId" order="AFTER" resultType="int">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <!-- 读取 -->
+    <select id="getPlantsBasicInfoById" resultMap="BasicInfoResultMap" parameterType="int">
+        <!-- 使用查询语句，根据植物ID查询基本信息 -->
+        SELECT pb.*,pi.*,pd.*
+        FROM PlantsBasicInfo pb
+        LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
+        LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+        WHERE pb.plantId = #{plantId}
+    </select>
+
+    <!-- 读取所有 -->
+    <select id="getAllPlantsBasicInfo" resultMap="BasicInfoResultMap">
+        <!-- 使用查询语句，查询所有植物基本信息 -->
+        SELECT pb.*,pi.*,pd.*
+        FROM PlantsBasicInfo pb
+        LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
+        LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+    </select>
+
+    <!-- 更新 -->
+    <update id="updatePlantsBasicInfo" parameterType="org.plants.po.PlantsBasicInfo">
+        <!-- 使用更新语句，根据植物ID更新基本信息 -->
+        UPDATE PlantsBasicInfo
+        SET diseaseName = #{diseaseName}, devisionId = #{devisionId}, morphologicalFeatures = #{morphologicalFeatures},
+        cultivationTechniques = #{cultivationTechniques}, applicationValue = #{applicationValue}
+        WHERE plantId = #{plantId}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deletePlantsBasicInfo" parameterType="int">
+        <!-- 使用删除语句，根据植物ID删除基本信息 -->
+        DELETE FROM PlantsBasicInfo WHERE plantId = #{plantId}
+    </delete>
+
+    <!-- 统计各科植物数量的查询 -->
+    <select id="countPlantsByDevision" resultType="java.util.Map">
+        SELECT pd.FamilyName, COUNT(pb.plantId) as plantCount
+        FROM PlantDevision pd
+        LEFT JOIN PlantsBasicInfo pb ON pd.DevisionID = pb.devisionId
+        GROUP BY pd.FamilyName
+    </select>
+    <!-- 根据任意属性或属性组合查询 -->
+    <select id="searchPlants" parameterType="java.util.Map" resultMap="BasicInfoResultMap">
+        SELECT pb.*,pi.*,pd.*
+        FROM PlantsBasicInfo pb
+        LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
+        LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+        WHERE
+        <!-- 使用动态 SQL 进行条件判断 -->
+        <if test="diseaseName != null"> AND pb.diseaseName = #{diseaseName} </if>
+        <if test="divisionId != null"> AND pb.divisionId = #{divisionId} </if>
+        <!-- 其他属性判断同上 -->
+        <if test="FamilyName != null"> AND pd.FamilyName = #{FamilyName} </if>
+        <if test="GenusName != null"> AND pd.GenusName = #{GenusName} </if>
+        <if test="SpeciesName != null"> AND pd.divisionId = #{SpeciesName} </if>
+        <if test="Anothername != null"> AND pd.divisionId = #{Anothername} </if>
+        <!-- 如果有多个条件，可以根据需要添加 -->
+    </select>
+</mapper>

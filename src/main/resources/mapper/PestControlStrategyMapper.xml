@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PestControlStrategyDAO">
+    <resultMap id="PestControlStrategyResultMap" type="org.plants.po.PestControlStrategy">
+        <id column="strategieId" property="strategieId" />
+        <result column="plantId" property="plantId" />
+        <result column="preventionId" property="preventionId" />
+    </resultMap>
+    <!-- 创建 -->
+    <insert id="addPestControlStrategy" parameterType="org.plants.po.PestControlStrategy">
+        <!-- 使用插入语句，将实体类的属性映射到数据库表的字段 -->
+        INSERT INTO pest_control_strategies (strategieId, plantId, preventionId)
+        VALUES (#{strategieId}, #{plantId}, #{preventionId})
+    </insert>
+
+    <!-- 读取 -->
+    <select id="getPestControlStrategyById" resultMap="PestControlStrategyResultMap" parameterType="int">
+        <!-- 使用查询语句，根据策略ID查询病虫害防治策略信息 -->
+        SELECT * FROM pest_control_strategies WHERE strategieId = #{strategieId}
+    </select>
+
+    <!-- 根据植物ID查询病虫害防治策略信息 -->
+    <select id="getPestControlStrategiesByPlantId" resultMap="PestControlStrategyResultMap" parameterType="int">
+        SELECT * FROM pest_control_strategies WHERE plantId = #{plantId}
+    </select>
+
+    <!-- 更新 -->
+    <update id="updatePestControlStrategy" parameterType="org.plants.po.PestControlStrategy">
+        <!-- 使用更新语句，根据策略ID更新病虫害防治策略信息 -->
+        UPDATE pest_control_strategies
+        SET plantId = #{plantId}, preventionId = #{preventionId}
+        WHERE strategieId = #{strategieId}
+    </update>
+
+    <!-- 删除 -->
+    <delete id="deletePestControlStrategy" parameterType="int">
+        <!-- 使用删除语句，根据策略ID删除病虫害防治策略信息 -->
+        DELETE FROM pest_control_strategies WHERE strategieId = #{strategieId}
+    </delete>
+</mapper>

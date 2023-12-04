@@ -1,5 +1,7 @@
 package org.plants.po;
 
+import java.util.List;
+
 /**
  * 植物基本信息类
  */
@@ -28,6 +30,14 @@ public class PlantsBasicInfo {
      * 应用价值
      */
     private String applicationValue;
+    /**
+     * 植物配图
+     */
+    List<PlantImage> plantImageList;
+    /**
+     * 植物分类
+     */
+    private PlantDevision plantDevision;
 
     public PlantsBasicInfo() {
     }
@@ -87,5 +97,21 @@ public class PlantsBasicInfo {
 
     public void setApplicationValue(String applicationValue) {
         this.applicationValue = applicationValue;
+    }
+
+    public List<PlantImage> getPlantImageList() {
+        return plantImageList;
+    }
+
+    public void setPlantImageList(List<PlantImage> plantImageList) {
+        this.plantImageList = plantImageList;
+    }
+
+    public PlantDevision getPlantDevision() {
+        return plantDevision;
+    }
+
+    public void setPlantDevision(PlantDevision plantDevision) {
+        this.plantDevision = plantDevision;
     }
 }
