@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PlantsbasicinfoMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Plantsbasicinfo">
+            <id property="plantid" column="plantId" jdbcType="INTEGER"/>
+            <result property="diseasename" column="diseaseName" jdbcType="VARCHAR"/>
+            <result property="devisionid" column="devisionId" jdbcType="INTEGER"/>
+            <result property="morphologicalfeatures" column="morphologicalFeatures" jdbcType="VARCHAR"/>
+            <result property="cultivationtechniques" column="cultivationTechniques" jdbcType="VARCHAR"/>
+            <result property="applicationvalue" column="applicationValue" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!-- resultMap 配置 -->
+    <resultMap id="PlantsBasicInfoProResultMap" type="org.plants.pojo.PlantsBasicInfoPro">
+        <id property="plantid" column="plantId" jdbcType="INTEGER"/>
+        <result property="diseasename" column="diseaseName" jdbcType="VARCHAR"/>
+        <result property="devisionid" column="devisionId" jdbcType="INTEGER"/>
+        <result property="morphologicalfeatures" column="morphologicalFeatures" jdbcType="VARCHAR"/>
+        <result property="cultivationtechniques" column="cultivationTechniques" jdbcType="VARCHAR"/>
+        <result property="applicationvalue" column="applicationValue" jdbcType="VARCHAR"/>
+
+        <!-- 分类信息映射 -->
+        <result column="FamilyName" property="familyName" />
+        <result column="GenusName" property="genusName" />
+        <result column="SpeciesName" property="speciesName" />
+        <result column="AnotherName" property="anotherName" />
+
+        <!-- 病虫害防治策略映射 -->
+        <result column="PestName" property="pestName" />
+        <result column="ControlMethod" property="controlMethod" />
+        <result column="PesticideName" property="pesticideName" />
+        <result column="PesticideDosage" property="pesticideDosage" />
+        <result column="ValidityPeriod" property="validityPeriod" />
+
+        <!-- 嵌套 ResultMap，处理植物配图列表 -->
+        <collection property="plantImageList" ofType="org.plants.po.Plantimages">
+            <id column="imageId" property="imageid" />
+            <result column="plantId" property="plantid" />
+            <result column="imageData" property="imagedata" />
+            <result column="imageLocation" property="imagelocation" />
+            <result column="imageDescribe" property="imagedescribe" />
+            <result column="photographer" property="photographer" />
+        </collection>
+    </resultMap>
+    <sql id="Base_Column_List">
+        plantId,diseaseName,devisionId,
+        morphologicalFeatures,cultivationTechniques,applicationValue
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantsBasicInfo
+        where  plantId = #{plantid,jdbcType=INTEGER} 
+    </select>
+    <select id="selectAllByPlantid" resultType="org.plants.po.Plantsbasicinfo">
+        select
+        <include refid="Base_Column_List" />
+        from PlantsBasicInfo
+    </select>
+    <select id="selectPlantsBasicInfoPro" resultMap="PlantsBasicInfoProResultMap">
+        SELECT pb.*, pi.*, pd.*, pcs.*
+        FROM PlantsBasicInfo pb
+                 LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
+                 LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+                 LEFT JOIN PestControlStrategies pcs ON pb.plantId = pcs.plantId
+        WHERE pb.plantId = #{plantId}
+    </select>
+    <select id="countPlantsByDevision" resultType="java.util.Map">
+        SELECT pd.FamilyName, COUNT(pb.plantId) as plantCount
+        FROM PlantDevision pd
+                 LEFT JOIN PlantsBasicInfo pb ON pd.DevisionID = pb.devisionId
+        GROUP BY pd.FamilyName
+    </select>
+    <select id="searchPlants" resultMap="PlantsBasicInfoProResultMap">
+        SELECT pb.*,pi.*,pd.*
+        FROM PlantsBasicInfo pb
+        LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
+        LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+        WHERE 1=1
+        <!-- 使用动态 SQL 进行条件判断 -->
+        <if test="diseaseName != null"> AND pb.diseaseName = #{diseaseName} </if>
+        <if test="divisionId != null"> AND pb.divisionId = #{divisionId} </if>
+        <!-- 其他属性判断同上 -->
+        <if test="familyName != null"> AND pd.FamilyName = #{FamilyName} </if>
+        <if test="genusName != null"> AND pd.GenusName = #{GenusName} </if>
+        <if test="speciesName != null"> AND pd.divisionId = #{SpeciesName} </if>
+        <if test="anothername != null"> AND pd.divisionId = #{Anothername} </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from PlantsBasicInfo
+        where  plantId = #{plantid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="plantId" keyProperty="plantid" parameterType="org.plants.po.Plantsbasicinfo" useGeneratedKeys="true">
+        insert into PlantsBasicInfo
+        ( plantId,diseaseName,devisionId
+        ,morphologicalFeatures,cultivationTechniques,applicationValue
+        )
+        values (#{plantid,jdbcType=INTEGER},#{diseasename,jdbcType=VARCHAR},#{devisionid,jdbcType=INTEGER}
+        ,#{morphologicalfeatures,jdbcType=VARCHAR},#{cultivationtechniques,jdbcType=VARCHAR},#{applicationvalue,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="plantId" keyProperty="plantid" parameterType="org.plants.po.Plantsbasicinfo" useGeneratedKeys="true">
+        insert into PlantsBasicInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="plantid != null">plantId,</if>
+                <if test="diseasename != null">diseaseName,</if>
+                <if test="devisionid != null">devisionId,</if>
+                <if test="morphologicalfeatures != null">morphologicalFeatures,</if>
+                <if test="cultivationtechniques != null">cultivationTechniques,</if>
+                <if test="applicationvalue != null">applicationValue,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="plantid != null">#{plantid,jdbcType=INTEGER},</if>
+                <if test="diseasename != null">#{diseasename,jdbcType=VARCHAR},</if>
+                <if test="devisionid != null">#{devisionid,jdbcType=INTEGER},</if>
+                <if test="morphologicalfeatures != null">#{morphologicalfeatures,jdbcType=VARCHAR},</if>
+                <if test="cultivationtechniques != null">#{cultivationtechniques,jdbcType=VARCHAR},</if>
+                <if test="applicationvalue != null">#{applicationvalue,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Plantsbasicinfo">
+        update PlantsBasicInfo
+        <set>
+                <if test="diseasename != null">
+                    diseaseName = #{diseasename,jdbcType=VARCHAR},
+                </if>
+                <if test="devisionid != null">
+                    devisionId = #{devisionid,jdbcType=INTEGER},
+                </if>
+                <if test="morphologicalfeatures != null">
+                    morphologicalFeatures = #{morphologicalfeatures,jdbcType=VARCHAR},
+                </if>
+                <if test="cultivationtechniques != null">
+                    cultivationTechniques = #{cultivationtechniques,jdbcType=VARCHAR},
+                </if>
+                <if test="applicationvalue != null">
+                    applicationValue = #{applicationvalue,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   plantId = #{plantid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Plantsbasicinfo">
+        update PlantsBasicInfo
+        set 
+            diseaseName =  #{diseasename,jdbcType=VARCHAR},
+            devisionId =  #{devisionid,jdbcType=INTEGER},
+            morphologicalFeatures =  #{morphologicalfeatures,jdbcType=VARCHAR},
+            cultivationTechniques =  #{cultivationtechniques,jdbcType=VARCHAR},
+            applicationValue =  #{applicationvalue,jdbcType=VARCHAR}
+        where   plantId = #{plantid,jdbcType=INTEGER} 
+    </update>
+</mapper>
