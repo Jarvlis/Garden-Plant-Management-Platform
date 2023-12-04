@@ -1,5 +1,5 @@
 
-c
-java:S1854"FRemove this useless assignment to local variable "applicationContext".(şªĞÕ8ß»äÅÂ1
-T
-java:S1481"7Remove this unused "applicationContext" local variable.(şªĞÕ8à»äÅÂ1
+h
+java:S1128"KRemove this unused import 'org.springframework.context.ApplicationContext'.(»Ô»¿8‹•ˆ Ã1
+
+java:S1128"_Remove this unused import 'org.springframework.context.support.ClassPathXmlApplicationContext'.(•ËÛüÿÿÿÿ8Œ•ˆ Ã1
