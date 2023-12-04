@@ -18,7 +18,7 @@
         insert into PlantMaintenance
             ( MissionName,ExecutionTime,ExecutionPlace,userId,JobDescribtion,plantId)
         values
-            ( #{MissionName},#{ExecutionTime},#{ExecutionPlace},#{userId},#{JobDescribtion},#{plantId})
+            ( #{MissionName},#{ExecutionTime},#{ExecutionPlace},3,#{JobDescribtion},#{plantId})
     </insert>
 
     <update id="updateById" parameterType="org.plants.po.PlantMaintenance">
