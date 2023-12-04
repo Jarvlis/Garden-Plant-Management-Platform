@@ -11,8 +11,8 @@
     <!-- 创建 -->
     <insert id="addPestControlStrategy" parameterType="org.plants.po.PestControlStrategy">
         <!-- 使用插入语句，将实体类的属性映射到数据库表的字段 -->
-        INSERT INTO pest_control_strategies (strategieId, plantId, preventionId)
-        VALUES (#{strategieId}, #{plantId}, #{preventionId})
+        INSERT INTO pest_control_strategies ( plantId, preventionId)
+        VALUES ( #{plantId}, #{preventionId})
     </insert>
 
     <!-- 读取 -->

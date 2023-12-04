@@ -93,7 +93,7 @@
         FROM PlantsBasicInfo pb
         LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
         LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
-        WHERE
+        WHERE 1=1
         <!-- 使用动态 SQL 进行条件判断 -->
         <if test="diseaseName != null"> AND pb.diseaseName = #{diseaseName} </if>
         <if test="divisionId != null"> AND pb.divisionId = #{divisionId} </if>
