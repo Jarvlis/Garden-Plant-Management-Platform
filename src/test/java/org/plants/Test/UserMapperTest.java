@@ -2,13 +2,14 @@ package org.plants.Test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.plants.DAO.UserMapper;
-import org.plants.DAO.UserroleMapper;
+import org.plants.DAO.UserDAO;
+import org.plants.DAO.UserroleDAO;
 import org.plants.po.User;
 import org.plants.po.Userrole;
 import org.plants.pojo.UserWithRole;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.BootstrapWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,14 +21,14 @@ import static org.junit.Assert.assertNotNull;
 @Configuration
 @ComponentScan(basePackages = {"org.plants.DAO"})
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {UserMapperTest.class})
+@BootstrapWith()
 public class UserMapperTest {
 
     @Resource
-    UserMapper userMapper;
+    UserDAO userDAO;
 
     @Resource
-    UserroleMapper userroleMapper;
+    UserroleDAO userroleDAO;
 
     @Test
     public void testInsertSelective() {
@@ -38,14 +39,14 @@ public class UserMapperTest {
         user.setPhonenumber("10010");
 
         // 执行插入用户表操作
-        int result1 = userMapper.insertSelective(user);
+        int result1 = userDAO.insertSelective(user);
 
         Userrole userrole = new Userrole();
         userrole.setRoleid(1);
         userrole.setUserid(user.getUserid());
 
         // 插入用户权限表
-        int result2 = userroleMapper.insertSelective(userrole);
+        int result2 = userroleDAO.insertSelective(userrole);
 
         // 验证结果
         assertEquals(1, result1);
@@ -59,7 +60,7 @@ public class UserMapperTest {
         int id = 1;
 
         // 执行查询操作
-        UserWithRole result = userMapper.selectUserRoleByPrimaryKey(id);
+        UserWithRole result = userDAO.selectUserRoleByPrimaryKey(id);
 
         // 验证结果
         assertNotNull(result);
@@ -73,20 +74,20 @@ public class UserMapperTest {
         int id = 5;
 
         // 查询原始数据
-        User original = userMapper.selectByPrimaryKey(id);
+        User original = userDAO.selectByPrimaryKey(id);
 
         // 修改部分属性值
         original.setUsername("王二狗");
         original.setUserpassword("00000000");
 
         // 执行更新操作
-        int result = userMapper.updateByPrimaryKeySelective(original);
+        int result = userDAO.updateByPrimaryKeySelective(original);
 
         // 验证结果
         assertEquals(1, result);
 
         // 再次查询以验证更新是否成功
-        User updated = userMapper.selectByPrimaryKey(id);
+        User updated = userDAO.selectByPrimaryKey(id);
         assertEquals("王二狗", updated.getUsername());
         assertEquals("00000000", updated.getUserpassword());
     }
@@ -98,8 +99,8 @@ public class UserMapperTest {
         int id = 5;
 
         // 执行删除操作
-        int result1 = userMapper.deleteByPrimaryKey(id);
-        int result2 = userroleMapper.deleteByPrimaryKey(id);
+        int result1 = userDAO.deleteByPrimaryKey(id);
+        int result2 = userroleDAO.deleteByPrimaryKey(id);
 
         // 验证结果
         assertEquals(1, result1);

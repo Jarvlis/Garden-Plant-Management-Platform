@@ -1,8 +1,15 @@
 package org.plants.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * 配图信息类
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlantImage {
     /**
      * 配图ID
@@ -28,9 +35,6 @@ public class PlantImage {
      * 配图拍摄者
      */
     private String photographer;
-
-    public PlantImage() {
-    }
 
     public PlantImage(int imageId, int plantId, byte[] imageData, String imagePath, String imageLocation, String imageDescribe, String photographer) {
         this.imageId = imageId;

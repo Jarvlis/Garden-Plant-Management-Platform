@@ -1,19 +1,16 @@
 package org.plants.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PestControlStrategy {
     private int strategieId;
     private int plantId;
     private int preventionId;
-
-    public PestControlStrategy() {
-    }
-
-    public PestControlStrategy(int strategieId, int plantId, int preventionId) {
-        this.strategieId = strategieId;
-        this.plantId = plantId;
-        this.preventionId = preventionId;
-    }
 
     public int getStrategieId() {
         return strategieId;

@@ -1,9 +1,13 @@
 package org.plants.DAO;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.DistributionArea;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Mapper
+@Repository
 public interface DistributionAreaDAO {
     int insert(DistributionArea distribution);
     int delete(int distributionId);

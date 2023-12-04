@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 */
 @Mapper
 @Repository
-public interface RoleMapper {
+public interface RoleDAO {
 
     int deleteByPrimaryKey(Integer id);
 

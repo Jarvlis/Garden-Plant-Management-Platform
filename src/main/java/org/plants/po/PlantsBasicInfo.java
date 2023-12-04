@@ -1,8 +1,15 @@
 package org.plants.po;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 /**
  * 植物基本信息类
  */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlantsBasicInfo {
     /**
      * 植物ID
@@ -28,18 +35,6 @@ public class PlantsBasicInfo {
      * 应用价值
      */
     private String applicationValue;
-
-    public PlantsBasicInfo() {
-    }
-
-    public PlantsBasicInfo(int plantId, String diseaseName, int devisionId, String morphologicalFeatures, String cultivationTechniques, String applicationValue) {
-        this.plantId = plantId;
-        this.diseaseName = diseaseName;
-        this.devisionId = devisionId;
-        this.morphologicalFeatures = morphologicalFeatures;
-        this.cultivationTechniques = cultivationTechniques;
-        this.applicationValue = applicationValue;
-    }
 
     public int getPlantId() {
         return plantId;

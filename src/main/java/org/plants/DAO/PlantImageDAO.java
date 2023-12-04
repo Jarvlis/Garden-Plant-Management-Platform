@@ -1,9 +1,12 @@
 package org.plants.DAO;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.PlantImage;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Mapper
+@Repository
 public interface PlantImageDAO {
     // 创建
     void addPlantImage(PlantImage plantImage);
