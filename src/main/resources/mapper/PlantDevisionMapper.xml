@@ -24,7 +24,7 @@
              DistributionAreaID,GrowingEnvironment,Creator,CreationTime,UpdateTime)
         values
             ( #{FamilyName},#{GenusName},#{SpeciesName},#{Anothername},
-             #{DistributionAreaID},#{GrowingEnvironment},#{Creator},#{CreationTime},#{UpdateTime})
+             #{DistributionAreaID},#{GrowingEnvironment},1,#{CreationTime},#{UpdateTime})
     </insert>
 
     <delete id="delete" parameterType="INTEGER">
@@ -52,9 +52,6 @@
             </if>
             <if test="GrowingEnvironment != null">
                 GrowingEnvironment = #{GrowingEnvironment},
-            </if>
-            <if test="Creator != null">
-                Creator = #{Creator},
             </if>
             <if test="CreationTime != null">
                 CreationTime = #{CreationTime},

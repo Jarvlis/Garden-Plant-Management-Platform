@@ -1,10 +1,14 @@
 package org.plants.DAO;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.PlantDevision;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 //植物分类管理
+@Mapper
+@Repository
 public interface PlantDevisionDAO {
     int insert(PlantDevision plant);
     int delete(int plantDevisionId);

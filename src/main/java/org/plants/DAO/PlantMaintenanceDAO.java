@@ -1,12 +1,17 @@
 package org.plants.DAO;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.PlantMaintenance;
+import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /*
 植物养护管理
  */
+@Mapper
+@Repository
 public interface PlantMaintenanceDAO {
     int insert(PlantMaintenance plantMaintenance);
     int updateById(PlantMaintenance plantMaintenanceID);

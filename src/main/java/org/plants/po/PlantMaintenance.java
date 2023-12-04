@@ -1,6 +1,8 @@
 package org.plants.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -9,6 +11,8 @@ import java.time.LocalDateTime;
 植物养护管理
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PlantMaintenance implements Serializable {
     private static final long serialVersionUID =1L;
     //养护任务编号

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.UserDAO">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.User">
+            <id property="userid" column="userId" jdbcType="INTEGER"/>
+            <result property="username" column="userName" jdbcType="VARCHAR"/>
+            <result property="userpassword" column="userPassword" jdbcType="VARCHAR"/>
+            <result property="createdat" column="createdAt" jdbcType="TIMESTAMP"/>
+            <result property="updatedat" column="updatedAt" jdbcType="TIMESTAMP"/>
+            <result property="phonenumber" column="phoneNumber" jdbcType="VARCHAR"/>
+            <result property="userstatus" column="userStatus" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        userId,userName,userPassword,
+        createdAt,updatedAt,phoneNumber,
+        userStatus
+    </sql>
+
+    <select id="selectUserRoleByPrimaryKey" parameterType="java.lang.Integer" resultType="org.plants.pojo.UserWithRole">
+        select u.*,r.rolename
+        from User u
+        left join UserRole ur on u.userId = ur.userId
+        left join Role r on ur.roleId = r.roleId
+        where  userId = #{userid,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from User
+        where  userId = #{userid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from User
+        where  userId = #{userid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="org.plants.po.User" useGeneratedKeys="true">
+        insert into User
+        ( userId,userName,userPassword
+        ,createdAt,updatedAt,phoneNumber
+        ,userStatus)
+        values (#{userid,jdbcType=INTEGER},#{username,jdbcType=VARCHAR},#{userpassword,jdbcType=VARCHAR}
+        ,#{createdat,jdbcType=TIMESTAMP},#{updatedat,jdbcType=TIMESTAMP},#{phonenumber,jdbcType=VARCHAR}
+        ,#{userstatus,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="org.plants.po.User" useGeneratedKeys="true">
+        insert into User
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="userid != null">userId,</if>
+                <if test="username != null">userName,</if>
+                <if test="userpassword != null">userPassword,</if>
+                <if test="createdat != null">createdAt,</if>
+                <if test="updatedat != null">updatedAt,</if>
+                <if test="phonenumber != null">phoneNumber,</if>
+                <if test="userstatus != null">userStatus,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="userid != null">#{userid,jdbcType=INTEGER},</if>
+                <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+                <if test="userpassword != null">#{userpassword,jdbcType=VARCHAR},</if>
+                <if test="createdat != null">#{createdat,jdbcType=TIMESTAMP},</if>
+                <if test="updatedat != null">#{updatedat,jdbcType=TIMESTAMP},</if>
+                <if test="phonenumber != null">#{phonenumber,jdbcType=VARCHAR},</if>
+                <if test="userstatus != null">#{userstatus,jdbcType=TINYINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.User">
+        update User
+        <set>
+                <if test="username != null">
+                    userName = #{username,jdbcType=VARCHAR},
+                </if>
+                <if test="userpassword != null">
+                    userPassword = #{userpassword,jdbcType=VARCHAR},
+                </if>
+                <if test="createdat != null">
+                    createdAt = #{createdat,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatedat != null">
+                    updatedAt = #{updatedat,jdbcType=TIMESTAMP},
+                </if>
+                <if test="phonenumber != null">
+                    phoneNumber = #{phonenumber,jdbcType=VARCHAR},
+                </if>
+                <if test="userstatus != null">
+                    userStatus = #{userstatus,jdbcType=TINYINT},
+                </if>
+        </set>
+        where   userId = #{userid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.User">
+        update User
+        set 
+            userName =  #{username,jdbcType=VARCHAR},
+            userPassword =  #{userpassword,jdbcType=VARCHAR},
+            createdAt =  #{createdat,jdbcType=TIMESTAMP},
+            updatedAt =  #{updatedat,jdbcType=TIMESTAMP},
+            phoneNumber =  #{phonenumber,jdbcType=VARCHAR},
+            userStatus =  #{userstatus,jdbcType=TINYINT}
+        where   userId = #{userid,jdbcType=INTEGER} 
+    </update>
+</mapper>
