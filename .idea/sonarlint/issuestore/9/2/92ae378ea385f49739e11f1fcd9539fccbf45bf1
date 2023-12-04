@@ -7,5 +7,5 @@ k	java:S116"VRename this field "Anothername" to match the regular expression 
 w	java:S116"]Rename this field "DistributionAreaID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øÆœ¥ûÿÿÿÿ
 w	java:S116"]Rename this field "GrowingEnvironment" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ø†æïýÿÿÿÿ
 l	java:S116!"RRename this field "Creator" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤¥¼—úÿÿÿÿ
-k	java:S116#"WRename this field "CreationTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å¹ª
-j	java:S116%"URename this field "UpdateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(÷ÚÐ§
+q	java:S116#"WRename this field "CreationTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(áò×Šþÿÿÿÿ
+o	java:S116%"URename this field "UpdateTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ¢á‡ùÿÿÿÿ
