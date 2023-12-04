@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /*
@@ -20,7 +21,7 @@ public class PlantMaintenance implements Serializable {
     //任务名称
     private String MissionName;
     //执行时间
-    private LocalDateTime ExecutionTime;
+    private Timestamp ExecutionTime;
     //执行地点
     private String ExecutionPlace;
     //执行人员

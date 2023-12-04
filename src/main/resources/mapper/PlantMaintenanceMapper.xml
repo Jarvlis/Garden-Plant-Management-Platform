@@ -7,7 +7,7 @@
     <resultMap id="BaseResultMap" type="org.plants.po.PlantMaintenance">
         <id property="MaintenanceID" column="MaintenanceID" jdbcType="INTEGER"/>
         <result property="MissionName" column="MissionName" jdbcType="VARCHAR"/>
-        <result property="ExecutionTime" column="ExecutionTime" jdbcType="DATETIME"/>
+        <result property="ExecutionTime" column="ExecutionTime" jdbcType="TIMESTAMP"/>
         <result property="ExecutionPlace" column="ExecutionPlace" jdbcType="VARCHAR"/>
         <result property="userId" column="userId" jdbcType="INTEGER"/>
         <result property="JobDescribtion" column="JobDescribtion" jdbcType="VARCHAR"/>

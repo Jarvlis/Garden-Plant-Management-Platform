@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 /*
@@ -32,7 +33,7 @@ public class PlantDevision implements Serializable {
     //创建人员
     private int Creator;
     //创建时间
-    private LocalDateTime CreationTime;
+    private Timestamp CreationTime;
     //修改时间
-    private LocalDateTime UpdateTime;
+    private Timestamp UpdateTime;
 }

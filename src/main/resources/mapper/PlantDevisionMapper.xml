@@ -13,8 +13,8 @@
         <result property="DistributionAreaID" column="DistributionAreaID" jdbcType="INTEGER"/>
         <result property="GrowingEnvironment" column="GrowingEnvironment" jdbcType="VARCHAR"/>
         <result property="Creator" column="Creator" jdbcType="INTEGER"/>
-        <result property="CreationTime" column="CreationTime" jdbcType="DATETIME"/>
-        <result property="UpdateTime" column="UpdateTime" jdbcType="DATETIME"/>
+        <result property="CreationTime" column="CreationTime" jdbcType="TIMESTAMP"/>
+        <result property="UpdateTime" column="UpdateTime" jdbcType="TIMESTAMP"/>
 
     </resultMap>
 
