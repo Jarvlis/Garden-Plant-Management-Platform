@@ -1,0 +1,19 @@
+2023-12-03 20:58:30  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 20:58:30 CST 2023]; root of context hierarchy
+2023-12-03 20:58:30  [ main:40 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:01:44  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:01:44 CST 2023]; root of context hierarchy
+2023-12-03 21:01:44  [ main:36 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:09:39  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:09:39 CST 2023]; root of context hierarchy
+2023-12-03 21:09:39  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:09:49  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:09:49 CST 2023]; root of context hierarchy
+2023-12-03 21:09:49  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:09:50  [ main:444 ] - [ WARN ]  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [applicationContext.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: java.io.IOException: Could not find resource UserMapper.xml
+2023-12-03 21:13:40  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:13:40 CST 2023]; root of context hierarchy
+2023-12-03 21:13:40  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:17:29  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:17:29 CST 2023]; root of context hierarchy
+2023-12-03 21:17:29  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:21:03  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:21:03 CST 2023]; root of context hierarchy
+2023-12-03 21:21:04  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:23:38  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:23:38 CST 2023]; root of context hierarchy
+2023-12-03 21:23:38  [ main:37 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
+2023-12-03 21:25:51  [ main:0 ] - [ INFO ]  Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@5594a1b5: startup date [Sun Dec 03 21:25:51 CST 2023]; root of context hierarchy
+2023-12-03 21:25:51  [ main:38 ] - [ INFO ]  Loading XML bean definitions from class path resource [applicationContext.xml]
