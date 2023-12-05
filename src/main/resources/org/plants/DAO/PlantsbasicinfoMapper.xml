@@ -61,11 +61,12 @@
         from PlantsBasicInfo
     </select>
     <select id="selectPlantsBasicInfoPro" resultMap="PlantsBasicInfoProResultMap">
-        SELECT pb.*, pi.*, pd.*, pcs.*
+        SELECT pb.*, pi.*, pd.*, pcs.*,pm.*
         FROM PlantsBasicInfo pb
                  LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
                  LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
                  LEFT JOIN PestControlStrategies pcs ON pb.plantId = pcs.plantId
+                 LEFT JOIN GardenPlantPestControlManagement pm ON pcs.preventionId = pm.PreventionId
         WHERE pb.plantId = #{plantId}
     </select>
     <select id="countPlantsByDevision" resultType="java.util.Map">
@@ -88,6 +89,14 @@
         <if test="genusName != null"> AND pd.GenusName = #{genusName} </if>
         <if test="speciesName != null"> AND pd.divisionId = #{gpeciesName} </if>
         <if test="anothername != null"> AND pd.divisionId = #{anothername} </if>
+    </select>
+    <select id="countPlantsByDisease" resultType="java.util.Map">
+        SELECT pm.PestName, COUNT(*) AS plantCount
+        FROM PlantsBasicInfo pb
+        LEFT JOIN PestControlStrategies pc ON pb.plantId = pc.plantId
+        LEFT JOIN GardenPlantPestControlManagement pm ON pc.preventionId = pm.PreventionId
+        WHERE pm.PestName IS NOT NULL
+        GROUP BY pm.PestName;
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

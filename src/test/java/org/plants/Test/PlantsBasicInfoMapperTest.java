@@ -1,5 +1,6 @@
 package org.plants.Test;
 
+import org.apache.ibatis.annotations.Param;
 import org.junit.jupiter.api.Test;
 import org.plants.DAO.PestcontrolstrategiesMapper;
 import org.plants.DAO.PlantimagesMapper;
@@ -43,7 +44,7 @@ public class PlantsBasicInfoMapperTest {
     @Test
     public void testCountPlantsByDevision() {
         // Execute the query to count plants by division
-        List<Map<String, Long>> result = plantsBasicInfoMapper.countPlantsByDevision();
+        List<Map<String, Object>> result = plantsBasicInfoMapper.countPlantsByDevision();
 
         // Validate the result
         assertNotNull(result);
@@ -153,4 +154,19 @@ public class PlantsBasicInfoMapperTest {
         // 可以进一步验证 resultList 中的内容
         System.out.println("SelectAll result: " + resultList);
     }
+    @Test
+    public void testCountPlantsByDisease() {
+        // 执行查询操作
+        List<Map<String, Object>> result = plantsBasicInfoMapper.countPlantsByDisease();
+        // 验证结果
+        assertNotNull(result);
+        System.out.println(result);
+        // 遍历结果并输出
+        for (Map<String, Object> entry : result) {
+            String pestName = String.valueOf(entry.get("PestName"));
+            Long plantCount = (Long) entry.get("plantCount");
+            System.out.println("病虫害名称: " + pestName + ", 植物数量: " + plantCount);
+        }
+    }
+
 }

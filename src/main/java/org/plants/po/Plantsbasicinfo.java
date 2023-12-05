@@ -10,32 +10,32 @@ import lombok.Data;
 @Data
 public class Plantsbasicinfo implements Serializable {
     /**
-     * 
+     * 植物ID
      */
     private Integer plantid;
 
     /**
-     * 
+     * 病名
      */
     private String diseasename;
 
     /**
-     * 
+     * 分类ID
      */
     private Integer devisionid;
 
     /**
-     * 
+     * 形态特征
      */
     private String morphologicalfeatures;
 
     /**
-     * 
+     * 栽培技术要点
      */
     private String cultivationtechniques;
 
     /**
-     * 
+     * 应用价值
      */
     private String applicationvalue;
 

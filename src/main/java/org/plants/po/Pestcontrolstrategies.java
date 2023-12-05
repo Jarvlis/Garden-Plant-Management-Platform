@@ -10,17 +10,17 @@ import lombok.Data;
 @Data
 public class Pestcontrolstrategies implements Serializable {
     /**
-     * 
+     * 策略ID
      */
     private Integer strategieid;
 
     /**
-     * 
+     * 植物ID
      */
     private Integer plantid;
 
     /**
-     * 
+     * 预防ID
      */
     private Integer preventionid;
 

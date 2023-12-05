@@ -11,32 +11,32 @@ import lombok.Data;
 @Data
 public class Plantimages implements Serializable {
     /**
-     * 
+     * 配图ID
      */
     private Integer imageid;
 
     /**
-     * 
+     * 植物ID
      */
     private Integer plantid;
 
     /**
-     * 
+     * 配图拍摄地
      */
     private String imagelocation;
 
     /**
-     * 
+     * 配图描述
      */
     private String imagedescribe;
 
     /**
-     * 
+     * 配图拍摄者
      */
     private String photographer;
 
     /**
-     * 
+     * 配图二进制存储
      */
     private byte[] imagedata;
 

@@ -1,6 +1,7 @@
 package org.plants.DAO;
 
 import org.apache.ibatis.annotations.MapKey;
+import org.apache.ibatis.annotations.Param;
 import org.plants.po.Plantsbasicinfo;
 import org.plants.pojo.PlantsBasicInfoPro;
 
@@ -35,10 +36,10 @@ public interface PlantsbasicinfoMapper {
      */
     PlantsBasicInfoPro selectPlantsBasicInfoPro(Long id);
     /**
-     * 统计各科植物信息
+     * 统计各科植物的数量信息
      */
     @MapKey("FamilyName")
-    List<Map<String, Long>> countPlantsByDevision();
+    List<Map<String, Object>> countPlantsByDevision();
 
     /**
      * 根据任意属性或属性组合查询植物
@@ -46,4 +47,9 @@ public interface PlantsbasicinfoMapper {
      * @return
      */
     List<PlantsBasicInfoPro> searchPlants(Map<String, Object> params);
+    /**
+     * 统计各种病虫害的植物数量
+     */
+    @MapKey("PestName")
+    List<Map<String, Object>> countPlantsByDisease();
 }
