@@ -20,18 +20,6 @@ U
 %src/main/java/org/plants/po/Role.java,2\f\2f70526d71e42a6c9f443f2d88039f8330adafc1
 _
 /src/main/java/org/plants/pojo/UserWithRole.java,8\9\89965309caa590ffe5781196f31ee8bfdf792c7a
-a
-1src/main/java/org/plants/po/DistributionArea.java,d\4\d493cd66ac17c2450aca1e4f50d81cbde1260aed
-d
-4src/main/java/org/plants/po/PestControlStrategy.java,0\a\0aa007fba94ce97a891483f3eec0cef03f800585
-^
-.src/main/java/org/plants/po/PlantDevision.java,9\2\92ae378ea385f49739e11f1fcd9539fccbf45bf1
-[
-+src/main/java/org/plants/po/PlantImage.java,a\7\a7ea9580e4d8bf84599cfeb5b56c653b4c701ef8
-a
-1src/main/java/org/plants/po/PlantMaintenance.java,7\8\78b9b4b9361542db205bbd85b69324cf99e5c4bb
-`
-0src/main/java/org/plants/po/PlantsBasicInfo.java,1\9\193a7a2679388655fdfef4a08fe0926004ccaee1
 \
 ,src/main/java/org/plants/DAO/RoleMapper.java,f\4\f4076c285d366507344947170a0042cd7c614247
 e
@@ -40,7 +28,3 @@ e
 .src/main/java/org/plants/config/AppConfig.java,c\4\c433b830299980095799d4f94d9b1ae09f3cd6e9
 a
 1src/main/java/org/plants/config/MapperConfig.java,6\6\662b4a6656703b32da62adcebe96b1b881ac1370
-h
-8src/main/java/org/plants/DAO/DistributionAreaMapper.java,4\8\48d9dae725537076e950f1772027320798feabc7
-b
-2src/main/java/org/plants/DAO/PlantImageMapper.java,4\7\47998cffa6b606dd320a4892cf3ca51fe6a7fbd7
