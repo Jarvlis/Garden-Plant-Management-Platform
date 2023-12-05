@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PlantdevisionMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Plantdevision">
+            <id property="devisionid" column="DevisionID" jdbcType="INTEGER"/>
+            <result property="familyname" column="FamilyName" jdbcType="VARCHAR"/>
+            <result property="genusname" column="GenusName" jdbcType="VARCHAR"/>
+            <result property="speciesname" column="SpeciesName" jdbcType="VARCHAR"/>
+            <result property="anothername" column="AnotherName" jdbcType="VARCHAR"/>
+            <result property="distributionareaid" column="DistributionAreaID" jdbcType="INTEGER"/>
+            <result property="growingenvironment" column="GrowingEnvironment" jdbcType="VARCHAR"/>
+            <result property="creator" column="Creator" jdbcType="INTEGER"/>
+            <result property="creationtime" column="CreationTime" jdbcType="TIMESTAMP"/>
+            <result property="updatetime" column="UpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        DevisionID,FamilyName,GenusName,
+        SpeciesName,AnotherName,DistributionAreaID,
+        GrowingEnvironment,Creator,CreationTime,
+        UpdateTime
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  DevisionID = #{devisionid,jdbcType=INTEGER} 
+    </select>
+    <select id="selectByAnothernamePlantdevisions" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  AnotherName like concat('%', #{anothername,jdbcType=VARCHAR}, '%')
+    </select>
+
+    <select id="selectByFamilynamePlantdevisions" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  FamilyName like concat('%', #{familyname,jdbcType=VARCHAR}, '%')
+    </select>
+
+    <select id="selectByGenusnamePlantdevisions" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  Genusname like concat('%', #{genusname,jdbcType=VARCHAR}, '%')
+    </select>
+
+    <select id="selectBySpeciesnamePlantdevisions" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  SpeciesName like concat('%', #{speciesname,jdbcType=VARCHAR}, '%')
+    </select>
+
+    <select id="selectByGrowingenvironmentPlantdevisions" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <include refid="Base_Column_List" />
+        from PlantDevision
+        where  GrowingEnvironment like concat('%', #{growingenvironment,jdbcType=VARCHAR}, '%')
+    </select>
+
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from PlantDevision
+        where  DevisionID = #{devisionid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="DevisionID" keyProperty="devisionid" parameterType="org.plants.po.Plantdevision" useGeneratedKeys="true">
+        insert into PlantDevision
+        ( DevisionID,FamilyName,GenusName
+        ,SpeciesName,AnotherName,DistributionAreaID
+        ,GrowingEnvironment,Creator,CreationTime
+        ,UpdateTime)
+        values (#{devisionid,jdbcType=INTEGER},#{familyname,jdbcType=VARCHAR},#{genusname,jdbcType=VARCHAR}
+        ,#{speciesname,jdbcType=VARCHAR},#{anothername,jdbcType=VARCHAR},#{distributionareaid,jdbcType=INTEGER}
+        ,#{growingenvironment,jdbcType=VARCHAR},#{creator,jdbcType=INTEGER},#{creationtime,jdbcType=TIMESTAMP}
+        ,#{updatetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="DevisionID" keyProperty="devisionid" parameterType="org.plants.po.Plantdevision" useGeneratedKeys="true">
+        insert into PlantDevision
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="devisionid != null">DevisionID,</if>
+                <if test="familyname != null">FamilyName,</if>
+                <if test="genusname != null">GenusName,</if>
+                <if test="speciesname != null">SpeciesName,</if>
+                <if test="anothername != null">AnotherName,</if>
+                <if test="distributionareaid != null">DistributionAreaID,</if>
+                <if test="growingenvironment != null">GrowingEnvironment,</if>
+                <if test="creator != null">Creator,</if>
+                <if test="creationtime != null">CreationTime,</if>
+                <if test="updatetime != null">UpdateTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="devisionid != null">#{devisionid,jdbcType=INTEGER},</if>
+                <if test="familyname != null">#{familyname,jdbcType=VARCHAR},</if>
+                <if test="genusname != null">#{genusname,jdbcType=VARCHAR},</if>
+                <if test="speciesname != null">#{speciesname,jdbcType=VARCHAR},</if>
+                <if test="anothername != null">#{anothername,jdbcType=VARCHAR},</if>
+                <if test="distributionareaid != null">#{distributionareaid,jdbcType=INTEGER},</if>
+                <if test="growingenvironment != null">#{growingenvironment,jdbcType=VARCHAR},</if>
+                <if test="creator != null">#{creator,jdbcType=INTEGER},</if>
+                <if test="creationtime != null">#{creationtime,jdbcType=TIMESTAMP},</if>
+                <if test="updatetime != null">#{updatetime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Plantdevision">
+        update PlantDevision
+        <set>
+                <if test="familyname != null">
+                    FamilyName = #{familyname,jdbcType=VARCHAR},
+                </if>
+                <if test="genusname != null">
+                    GenusName = #{genusname,jdbcType=VARCHAR},
+                </if>
+                <if test="speciesname != null">
+                    SpeciesName = #{speciesname,jdbcType=VARCHAR},
+                </if>
+                <if test="anothername != null">
+                    AnotherName = #{anothername,jdbcType=VARCHAR},
+                </if>
+                <if test="distributionareaid != null">
+                    DistributionAreaID = #{distributionareaid,jdbcType=INTEGER},
+                </if>
+                <if test="growingenvironment != null">
+                    GrowingEnvironment = #{growingenvironment,jdbcType=VARCHAR},
+                </if>
+                <if test="creator != null">
+                    Creator = #{creator,jdbcType=INTEGER},
+                </if>
+                <if test="creationtime != null">
+                    CreationTime = #{creationtime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatetime != null">
+                    UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   DevisionID = #{devisionid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Plantdevision">
+        update PlantDevision
+        set 
+            FamilyName =  #{familyname,jdbcType=VARCHAR},
+            GenusName =  #{genusname,jdbcType=VARCHAR},
+            SpeciesName =  #{speciesname,jdbcType=VARCHAR},
+            AnotherName =  #{anothername,jdbcType=VARCHAR},
+            DistributionAreaID =  #{distributionareaid,jdbcType=INTEGER},
+            GrowingEnvironment =  #{growingenvironment,jdbcType=VARCHAR},
+            Creator =  #{creator,jdbcType=INTEGER},
+            CreationTime =  #{creationtime,jdbcType=TIMESTAMP},
+            UpdateTime =  #{updatetime,jdbcType=TIMESTAMP}
+        where   DevisionID = #{devisionid,jdbcType=INTEGER} 
+    </update>
+</mapper>
