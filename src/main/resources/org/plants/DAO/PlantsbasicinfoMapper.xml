@@ -55,7 +55,7 @@
         from PlantsBasicInfo
         where  plantId = #{plantid,jdbcType=INTEGER} 
     </select>
-    <select id="selectAllByPlantid" resultType="org.plants.po.Plantsbasicinfo">
+    <select id="selectAll" resultType="org.plants.po.Plantsbasicinfo">
         select
         <include refid="Base_Column_List" />
         from PlantsBasicInfo
@@ -82,12 +82,12 @@
         WHERE 1=1
         <!-- 使用动态 SQL 进行条件判断 -->
         <if test="diseaseName != null"> AND pb.diseaseName = #{diseaseName} </if>
-        <if test="divisionId != null"> AND pb.divisionId = #{divisionId} </if>
+        <if test="divisionId != null"> AND pb.DevisionID = #{divisionId} </if>
         <!-- 其他属性判断同上 -->
-        <if test="familyName != null"> AND pd.FamilyName = #{FamilyName} </if>
-        <if test="genusName != null"> AND pd.GenusName = #{GenusName} </if>
-        <if test="speciesName != null"> AND pd.divisionId = #{SpeciesName} </if>
-        <if test="anothername != null"> AND pd.divisionId = #{Anothername} </if>
+        <if test="familyName != null"> AND pd.FamilyName = #{familyName} </if>
+        <if test="genusName != null"> AND pd.GenusName = #{genusName} </if>
+        <if test="speciesName != null"> AND pd.divisionId = #{gpeciesName} </if>
+        <if test="anothername != null"> AND pd.divisionId = #{anothername} </if>
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

@@ -22,7 +22,7 @@ public interface PlantsbasicinfoMapper {
     int insertSelective(Plantsbasicinfo record);
 
     Plantsbasicinfo selectByPrimaryKey(Long id);
-    List<Plantsbasicinfo> selectAllByPlantid(Long id);
+    List<Plantsbasicinfo> selectAll();
 
     int updateByPrimaryKeySelective(Plantsbasicinfo record);
 
