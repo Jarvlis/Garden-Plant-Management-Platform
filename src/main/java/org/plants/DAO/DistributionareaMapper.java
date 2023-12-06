@@ -1,6 +1,8 @@
 package org.plants.DAO;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.Distributionarea;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -10,6 +12,8 @@ import java.util.List;
 * @createDate 2023-12-05 09:12:28
 * @Entity org.plants.po.Distributionarea
 */
+@Mapper
+@Repository
 public interface DistributionareaMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -19,9 +23,10 @@ public interface DistributionareaMapper {
     int insertSelective(Distributionarea record);
 
     Distributionarea selectByPrimaryKey(Long id);
-    List<Integer> selectByProvince(String province);
-    List<Integer> selectByCity(String city);
-    List<Integer> selectByCountry(String country);
+    List<Distributionarea> selectAll();
+    List<Distributionarea> selectByProvince(String province);
+    List<Distributionarea> selectByCity(String city);
+    List<Distributionarea> selectByCountry(String country);
     int updateByPrimaryKeySelective(Distributionarea record);
 
     int updateByPrimaryKey(Distributionarea record);

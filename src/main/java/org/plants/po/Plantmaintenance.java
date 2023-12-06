@@ -14,37 +14,37 @@ public class Plantmaintenance implements Serializable {
     /**
      * 养护ID
      */
-    private Integer maintenanceid;
+    protected Integer maintenanceid;
 
     /**
      * 任务名称
      */
-    private String missionname;
+    protected String missionname;
 
     /**
      * 执行时间
      */
-    private Date executiontime;
+    protected Date executiontime;
 
     /**
      * 执行地点
      */
-    private String executionplace;
+    protected String executionplace;
 
     /**
      * 执行人员
      */
-    private Integer userid;
+    protected Integer userid;
 
     /**
      * 任务描述
      */
-    private String jobdescribtion;
+    protected String jobdescribtion;
 
     /**
      * 养护对象
      */
-    private Integer plantid;
+    protected Integer plantid;
 
     private static final long serialVersionUID = 1L;
 
