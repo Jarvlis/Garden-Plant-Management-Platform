@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PlantmaintenanceMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Plantmaintenance">
+            <id property="maintenanceid" column="MaintenanceID" jdbcType="INTEGER"/>
+            <result property="missionname" column="MissionName" jdbcType="VARCHAR"/>
+            <result property="executiontime" column="ExecutionTime" jdbcType="TIMESTAMP"/>
+            <result property="executionplace" column="ExecutionPlace" jdbcType="VARCHAR"/>
+            <result property="userid" column="userId" jdbcType="INTEGER"/>
+            <result property="jobdescribtion" column="JobDescribtion" jdbcType="VARCHAR"/>
+            <result property="plantid" column="plantId" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        MaintenanceID,MissionName,ExecutionTime,
+        ExecutionPlace,userId,JobDescribtion,
+        plantId
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantMaintenance
+        where  MaintenanceID = #{maintenanceid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from PlantMaintenance
+        where  MaintenanceID = #{maintenanceid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="MaintenanceID" keyProperty="maintenanceid" parameterType="org.plants.po.Plantmaintenance" useGeneratedKeys="true">
+        insert into PlantMaintenance
+        ( MaintenanceID,MissionName,ExecutionTime
+        ,ExecutionPlace,userId,JobDescribtion
+        ,plantId)
+        values (#{maintenanceid,jdbcType=INTEGER},#{missionname,jdbcType=VARCHAR},#{executiontime,jdbcType=TIMESTAMP}
+        ,#{executionplace,jdbcType=VARCHAR},#{userid,jdbcType=INTEGER},#{jobdescribtion,jdbcType=VARCHAR}
+        ,#{plantid,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="MaintenanceID" keyProperty="maintenanceid" parameterType="org.plants.po.Plantmaintenance" useGeneratedKeys="true">
+        insert into PlantMaintenance
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="maintenanceid != null">MaintenanceID,</if>
+                <if test="missionname != null">MissionName,</if>
+                <if test="executiontime != null">ExecutionTime,</if>
+                <if test="executionplace != null">ExecutionPlace,</if>
+                <if test="userid != null">userId,</if>
+                <if test="jobdescribtion != null">JobDescribtion,</if>
+                <if test="plantid != null">plantId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="maintenanceid != null">#{maintenanceid,jdbcType=INTEGER},</if>
+                <if test="missionname != null">#{missionname,jdbcType=VARCHAR},</if>
+                <if test="executiontime != null">#{executiontime,jdbcType=TIMESTAMP},</if>
+                <if test="executionplace != null">#{executionplace,jdbcType=VARCHAR},</if>
+                <if test="userid != null">#{userid,jdbcType=INTEGER},</if>
+                <if test="jobdescribtion != null">#{jobdescribtion,jdbcType=VARCHAR},</if>
+                <if test="plantid != null">#{plantid,jdbcType=INTEGER},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Plantmaintenance">
+        update PlantMaintenance
+        <set>
+                <if test="missionname != null">
+                    MissionName = #{missionname,jdbcType=VARCHAR},
+                </if>
+                <if test="executiontime != null">
+                    ExecutionTime = #{executiontime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="executionplace != null">
+                    ExecutionPlace = #{executionplace,jdbcType=VARCHAR},
+                </if>
+                <if test="userid != null">
+                    userId = #{userid,jdbcType=INTEGER},
+                </if>
+                <if test="jobdescribtion != null">
+                    JobDescribtion = #{jobdescribtion,jdbcType=VARCHAR},
+                </if>
+                <if test="plantid != null">
+                    plantId = #{plantid,jdbcType=INTEGER},
+                </if>
+        </set>
+        where   MaintenanceID = #{maintenanceid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Plantmaintenance">
+        update PlantMaintenance
+        set 
+            MissionName =  #{missionname,jdbcType=VARCHAR},
+            ExecutionTime =  #{executiontime,jdbcType=TIMESTAMP},
+            ExecutionPlace =  #{executionplace,jdbcType=VARCHAR},
+            userId =  #{userid,jdbcType=INTEGER},
+            JobDescribtion =  #{jobdescribtion,jdbcType=VARCHAR},
+            plantId =  #{plantid,jdbcType=INTEGER}
+        where   MaintenanceID = #{maintenanceid,jdbcType=INTEGER} 
+    </update>
+</mapper>
