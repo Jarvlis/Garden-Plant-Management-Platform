@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.EquipmentMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Equipment">
+            <id property="equipmentid" column="EquipmentId" jdbcType="INTEGER"/>
+            <result property="equipmentname" column="EquipmentName" jdbcType="VARCHAR"/>
+            <result property="createtime" column="CreateTime" jdbcType="TIMESTAMP"/>
+            <result property="updatetime" column="UpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        EquipmentId,EquipmentName,CreateTime,
+        UpdateTime
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from Equipment
+        where  EquipmentId = #{equipmentid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from Equipment
+        where  EquipmentId = #{equipmentid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="EquipmentId" keyProperty="equipmentid" parameterType="org.plants.po.Equipment" useGeneratedKeys="true">
+        insert into Equipment
+        ( EquipmentId,EquipmentName,CreateTime
+        ,UpdateTime)
+        values (#{equipmentid,jdbcType=INTEGER},#{equipmentname,jdbcType=VARCHAR},#{createtime,jdbcType=TIMESTAMP}
+        ,#{updatetime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="EquipmentId" keyProperty="equipmentid" parameterType="org.plants.po.Equipment" useGeneratedKeys="true">
+        insert into Equipment
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="equipmentid != null">EquipmentId,</if>
+                <if test="equipmentname != null">EquipmentName,</if>
+                <if test="createtime != null">CreateTime,</if>
+                <if test="updatetime != null">UpdateTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="equipmentid != null">#{equipmentid,jdbcType=INTEGER},</if>
+                <if test="equipmentname != null">#{equipmentname,jdbcType=VARCHAR},</if>
+                <if test="createtime != null">#{createtime,jdbcType=TIMESTAMP},</if>
+                <if test="updatetime != null">#{updatetime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Equipment">
+        update Equipment
+        <set>
+                <if test="equipmentname != null">
+                    EquipmentName = #{equipmentname,jdbcType=VARCHAR},
+                </if>
+                <if test="createtime != null">
+                    CreateTime = #{createtime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatetime != null">
+                    UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   EquipmentId = #{equipmentid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Equipment">
+        update Equipment
+        set 
+            EquipmentName =  #{equipmentname,jdbcType=VARCHAR},
+            CreateTime =  #{createtime,jdbcType=TIMESTAMP},
+            UpdateTime =  #{updatetime,jdbcType=TIMESTAMP}
+        where   EquipmentId = #{equipmentid,jdbcType=INTEGER} 
+    </update>
+</mapper>

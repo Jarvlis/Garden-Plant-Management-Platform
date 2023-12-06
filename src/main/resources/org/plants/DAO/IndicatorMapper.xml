@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.IndicatorMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Indicator">
+            <id property="indicatorid" column="IndicatorId" jdbcType="INTEGER"/>
+            <result property="indicatorname" column="IndicatorName" jdbcType="VARCHAR"/>
+            <result property="info" column="info" jdbcType="VARCHAR"/>
+            <result property="isnumeric" column="isnumeric" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        IndicatorId,IndicatorName,info,
+        isnumeric
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from Indicator
+        where  IndicatorId = #{indicatorid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from Indicator
+        where  IndicatorId = #{indicatorid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="IndicatorId" keyProperty="indicatorid" parameterType="org.plants.po.Indicator" useGeneratedKeys="true">
+        insert into Indicator
+        ( IndicatorId,IndicatorName,info
+        ,isnumeric)
+        values (#{indicatorid,jdbcType=INTEGER},#{indicatorname,jdbcType=VARCHAR},#{info,jdbcType=VARCHAR}
+        ,#{isnumeric,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="IndicatorId" keyProperty="indicatorid" parameterType="org.plants.po.Indicator" useGeneratedKeys="true">
+        insert into Indicator
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="indicatorid != null">IndicatorId,</if>
+                <if test="indicatorname != null">IndicatorName,</if>
+                <if test="info != null">info,</if>
+                <if test="isnumeric != null">isnumeric,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="indicatorid != null">#{indicatorid,jdbcType=INTEGER},</if>
+                <if test="indicatorname != null">#{indicatorname,jdbcType=VARCHAR},</if>
+                <if test="info != null">#{info,jdbcType=VARCHAR},</if>
+                <if test="isnumeric != null">#{isnumeric,jdbcType=TINYINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Indicator">
+        update Indicator
+        <set>
+                <if test="indicatorname != null">
+                    IndicatorName = #{indicatorname,jdbcType=VARCHAR},
+                </if>
+                <if test="info != null">
+                    info = #{info,jdbcType=VARCHAR},
+                </if>
+                <if test="isnumeric != null">
+                    isnumeric = #{isnumeric,jdbcType=TINYINT},
+                </if>
+        </set>
+        where   IndicatorId = #{indicatorid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Indicator">
+        update Indicator
+        set 
+            IndicatorName =  #{indicatorname,jdbcType=VARCHAR},
+            info =  #{info,jdbcType=VARCHAR},
+            isnumeric =  #{isnumeric,jdbcType=TINYINT}
+        where   IndicatorId = #{indicatorid,jdbcType=INTEGER} 
+    </update>
+</mapper>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.GardenplantmonitoringmanagementMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Gardenplantmonitoringmanagement">
+            <id property="monitoringid" column="MonitoringId" jdbcType="INTEGER"/>
+            <result property="monitoringtime" column="MonitoringTime" jdbcType="TIMESTAMP"/>
+            <result property="monitoringstaffid" column="MonitoringStaffId" jdbcType="INTEGER"/>
+            <result property="monitoringlocation" column="MonitoringLocation" jdbcType="VARCHAR"/>
+            <result property="monitoringplantid" column="MonitoringPlantId" jdbcType="INTEGER"/>
+            <result property="monitoringindicatorid" column="MonitoringIndicatorId" jdbcType="INTEGER"/>
+            <result property="monitoringequipmentid" column="MonitoringEquipmentId" jdbcType="INTEGER"/>
+            <result property="numericresult" column="NumericResult" jdbcType="DECIMAL"/>
+            <result property="commonresult" column="CommonResult" jdbcType="VARCHAR"/>
+            <result property="creatorid" column="CreatorId" jdbcType="INTEGER"/>
+            <result property="createtime" column="CreateTime" jdbcType="TIMESTAMP"/>
+            <result property="updatetime" column="UpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        MonitoringId,MonitoringTime,MonitoringStaffId,
+        MonitoringLocation,MonitoringPlantId,MonitoringIndicatorId,
+        MonitoringEquipmentId,NumericResult,CommonResult,
+        CreatorId,CreateTime,UpdateTime
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from GardenPlantMonitoringManagement
+        where  MonitoringId = #{monitoringid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from GardenPlantMonitoringManagement
+        where  MonitoringId = #{monitoringid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="MonitoringId" keyProperty="monitoringid" parameterType="org.plants.po.Gardenplantmonitoringmanagement" useGeneratedKeys="true">
+        insert into GardenPlantMonitoringManagement
+        ( MonitoringId,MonitoringTime,MonitoringStaffId
+        ,MonitoringLocation,MonitoringPlantId,MonitoringIndicatorId
+        ,MonitoringEquipmentId,NumericResult,CommonResult
+        ,CreatorId,CreateTime,UpdateTime
+        )
+        values (#{monitoringid,jdbcType=INTEGER},#{monitoringtime,jdbcType=TIMESTAMP},#{monitoringstaffid,jdbcType=INTEGER}
+        ,#{monitoringlocation,jdbcType=VARCHAR},#{monitoringplantid,jdbcType=INTEGER},#{monitoringindicatorid,jdbcType=INTEGER}
+        ,#{monitoringequipmentid,jdbcType=INTEGER},#{numericresult,jdbcType=DECIMAL},#{commonresult,jdbcType=VARCHAR}
+        ,#{creatorid,jdbcType=INTEGER},#{createtime,jdbcType=TIMESTAMP},#{updatetime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="MonitoringId" keyProperty="monitoringid" parameterType="org.plants.po.Gardenplantmonitoringmanagement" useGeneratedKeys="true">
+        insert into GardenPlantMonitoringManagement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="monitoringid != null">MonitoringId,</if>
+                <if test="monitoringtime != null">MonitoringTime,</if>
+                <if test="monitoringstaffid != null">MonitoringStaffId,</if>
+                <if test="monitoringlocation != null">MonitoringLocation,</if>
+                <if test="monitoringplantid != null">MonitoringPlantId,</if>
+                <if test="monitoringindicatorid != null">MonitoringIndicatorId,</if>
+                <if test="monitoringequipmentid != null">MonitoringEquipmentId,</if>
+                <if test="numericresult != null">NumericResult,</if>
+                <if test="commonresult != null">CommonResult,</if>
+                <if test="creatorid != null">CreatorId,</if>
+                <if test="createtime != null">CreateTime,</if>
+                <if test="updatetime != null">UpdateTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="monitoringid != null">#{monitoringid,jdbcType=INTEGER},</if>
+                <if test="monitoringtime != null">#{monitoringtime,jdbcType=TIMESTAMP},</if>
+                <if test="monitoringstaffid != null">#{monitoringstaffid,jdbcType=INTEGER},</if>
+                <if test="monitoringlocation != null">#{monitoringlocation,jdbcType=VARCHAR},</if>
+                <if test="monitoringplantid != null">#{monitoringplantid,jdbcType=INTEGER},</if>
+                <if test="monitoringindicatorid != null">#{monitoringindicatorid,jdbcType=INTEGER},</if>
+                <if test="monitoringequipmentid != null">#{monitoringequipmentid,jdbcType=INTEGER},</if>
+                <if test="numericresult != null">#{numericresult,jdbcType=DECIMAL},</if>
+                <if test="commonresult != null">#{commonresult,jdbcType=VARCHAR},</if>
+                <if test="creatorid != null">#{creatorid,jdbcType=INTEGER},</if>
+                <if test="createtime != null">#{createtime,jdbcType=TIMESTAMP},</if>
+                <if test="updatetime != null">#{updatetime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Gardenplantmonitoringmanagement">
+        update GardenPlantMonitoringManagement
+        <set>
+                <if test="monitoringtime != null">
+                    MonitoringTime = #{monitoringtime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="monitoringstaffid != null">
+                    MonitoringStaffId = #{monitoringstaffid,jdbcType=INTEGER},
+                </if>
+                <if test="monitoringlocation != null">
+                    MonitoringLocation = #{monitoringlocation,jdbcType=VARCHAR},
+                </if>
+                <if test="monitoringplantid != null">
+                    MonitoringPlantId = #{monitoringplantid,jdbcType=INTEGER},
+                </if>
+                <if test="monitoringindicatorid != null">
+                    MonitoringIndicatorId = #{monitoringindicatorid,jdbcType=INTEGER},
+                </if>
+                <if test="monitoringequipmentid != null">
+                    MonitoringEquipmentId = #{monitoringequipmentid,jdbcType=INTEGER},
+                </if>
+                <if test="numericresult != null">
+                    NumericResult = #{numericresult,jdbcType=DECIMAL},
+                </if>
+                <if test="commonresult != null">
+                    CommonResult = #{commonresult,jdbcType=VARCHAR},
+                </if>
+                <if test="creatorid != null">
+                    CreatorId = #{creatorid,jdbcType=INTEGER},
+                </if>
+                <if test="createtime != null">
+                    CreateTime = #{createtime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatetime != null">
+                    UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   MonitoringId = #{monitoringid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Gardenplantmonitoringmanagement">
+        update GardenPlantMonitoringManagement
+        set 
+            MonitoringTime =  #{monitoringtime,jdbcType=TIMESTAMP},
+            MonitoringStaffId =  #{monitoringstaffid,jdbcType=INTEGER},
+            MonitoringLocation =  #{monitoringlocation,jdbcType=VARCHAR},
+            MonitoringPlantId =  #{monitoringplantid,jdbcType=INTEGER},
+            MonitoringIndicatorId =  #{monitoringindicatorid,jdbcType=INTEGER},
+            MonitoringEquipmentId =  #{monitoringequipmentid,jdbcType=INTEGER},
+            NumericResult =  #{numericresult,jdbcType=DECIMAL},
+            CommonResult =  #{commonresult,jdbcType=VARCHAR},
+            CreatorId =  #{creatorid,jdbcType=INTEGER},
+            CreateTime =  #{createtime,jdbcType=TIMESTAMP},
+            UpdateTime =  #{updatetime,jdbcType=TIMESTAMP}
+        where   MonitoringId = #{monitoringid,jdbcType=INTEGER} 
+    </update>
+</mapper>

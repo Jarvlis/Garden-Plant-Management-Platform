@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.PlantindicatorMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Plantindicator">
+            <id property="plantinicatorid" column="PlantInicatorId" jdbcType="INTEGER"/>
+            <result property="plantid" column="PlantId" jdbcType="INTEGER"/>
+            <result property="indicatorid" column="IndicatorId" jdbcType="INTEGER"/>
+            <result property="low" column="low" jdbcType="DECIMAL"/>
+            <result property="high" column="high" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        PlantInicatorId,PlantId,IndicatorId,
+        low,high
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PlantIndicator
+        where  PlantInicatorId = #{plantinicatorid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from PlantIndicator
+        where  PlantInicatorId = #{plantinicatorid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="PlantInicatorId" keyProperty="plantinicatorid" parameterType="org.plants.po.Plantindicator" useGeneratedKeys="true">
+        insert into PlantIndicator
+        ( PlantInicatorId,PlantId,IndicatorId
+        ,low,high)
+        values (#{plantinicatorid,jdbcType=INTEGER},#{plantid,jdbcType=INTEGER},#{indicatorid,jdbcType=INTEGER}
+        ,#{low,jdbcType=DECIMAL},#{high,jdbcType=DECIMAL})
+    </insert>
+    <insert id="insertSelective" keyColumn="PlantInicatorId" keyProperty="plantinicatorid" parameterType="org.plants.po.Plantindicator" useGeneratedKeys="true">
+        insert into PlantIndicator
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="plantinicatorid != null">PlantInicatorId,</if>
+                <if test="plantid != null">PlantId,</if>
+                <if test="indicatorid != null">IndicatorId,</if>
+                <if test="low != null">low,</if>
+                <if test="high != null">high,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="plantinicatorid != null">#{plantinicatorid,jdbcType=INTEGER},</if>
+                <if test="plantid != null">#{plantid,jdbcType=INTEGER},</if>
+                <if test="indicatorid != null">#{indicatorid,jdbcType=INTEGER},</if>
+                <if test="low != null">#{low,jdbcType=DECIMAL},</if>
+                <if test="high != null">#{high,jdbcType=DECIMAL},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Plantindicator">
+        update PlantIndicator
+        <set>
+                <if test="plantid != null">
+                    PlantId = #{plantid,jdbcType=INTEGER},
+                </if>
+                <if test="indicatorid != null">
+                    IndicatorId = #{indicatorid,jdbcType=INTEGER},
+                </if>
+                <if test="low != null">
+                    low = #{low,jdbcType=DECIMAL},
+                </if>
+                <if test="high != null">
+                    high = #{high,jdbcType=DECIMAL},
+                </if>
+        </set>
+        where   PlantInicatorId = #{plantinicatorid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Plantindicator">
+        update PlantIndicator
+        set 
+            PlantId =  #{plantid,jdbcType=INTEGER},
+            IndicatorId =  #{indicatorid,jdbcType=INTEGER},
+            low =  #{low,jdbcType=DECIMAL},
+            high =  #{high,jdbcType=DECIMAL}
+        where   PlantInicatorId = #{plantinicatorid,jdbcType=INTEGER} 
+    </update>
+</mapper>
