@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.GardenplantpestcontrolmanagementMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Gardenplantpestcontrolmanagement">
+            <id property="preventionid" column="PreventionId" jdbcType="INTEGER"/>
+            <result property="pestname" column="PestName" jdbcType="VARCHAR"/>
+            <result property="controlmethod" column="ControlMethod" jdbcType="VARCHAR"/>
+            <result property="pesticidename" column="PesticideName" jdbcType="VARCHAR"/>
+            <result property="pesticidedosage" column="PesticideDosage" jdbcType="VARCHAR"/>
+            <result property="validityperiod" column="ValidityPeriod" jdbcType="VARCHAR"/>
+            <result property="creator" column="Creator" jdbcType="VARCHAR"/>
+            <result property="creationtime" column="CreationTime" jdbcType="TIMESTAMP"/>
+            <result property="updatetime" column="UpdateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        PreventionId,PestName,ControlMethod,
+        PesticideName,PesticideDosage,ValidityPeriod,
+        Creator,CreationTime,UpdateTime
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from GardenPlantPestControlManagement
+        where  PreventionId = #{preventionid,jdbcType=INTEGER} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from GardenPlantPestControlManagement
+        where  PreventionId = #{preventionid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="PreventionId" keyProperty="preventionid" parameterType="org.plants.po.Gardenplantpestcontrolmanagement" useGeneratedKeys="true">
+        insert into GardenPlantPestControlManagement
+        ( PreventionId,PestName,ControlMethod
+        ,PesticideName,PesticideDosage,ValidityPeriod
+        ,Creator,CreationTime,UpdateTime
+        )
+        values (#{preventionid,jdbcType=INTEGER},#{pestname,jdbcType=VARCHAR},#{controlmethod,jdbcType=VARCHAR}
+        ,#{pesticidename,jdbcType=VARCHAR},#{pesticidedosage,jdbcType=VARCHAR},#{validityperiod,jdbcType=VARCHAR}
+        ,#{creator,jdbcType=VARCHAR},#{creationtime,jdbcType=TIMESTAMP},#{updatetime,jdbcType=TIMESTAMP}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="PreventionId" keyProperty="preventionid" parameterType="org.plants.po.Gardenplantpestcontrolmanagement" useGeneratedKeys="true">
+        insert into GardenPlantPestControlManagement
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="preventionid != null">PreventionId,</if>
+                <if test="pestname != null">PestName,</if>
+                <if test="controlmethod != null">ControlMethod,</if>
+                <if test="pesticidename != null">PesticideName,</if>
+                <if test="pesticidedosage != null">PesticideDosage,</if>
+                <if test="validityperiod != null">ValidityPeriod,</if>
+                <if test="creator != null">Creator,</if>
+                <if test="creationtime != null">CreationTime,</if>
+                <if test="updatetime != null">UpdateTime,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="preventionid != null">#{preventionid,jdbcType=INTEGER},</if>
+                <if test="pestname != null">#{pestname,jdbcType=VARCHAR},</if>
+                <if test="controlmethod != null">#{controlmethod,jdbcType=VARCHAR},</if>
+                <if test="pesticidename != null">#{pesticidename,jdbcType=VARCHAR},</if>
+                <if test="pesticidedosage != null">#{pesticidedosage,jdbcType=VARCHAR},</if>
+                <if test="validityperiod != null">#{validityperiod,jdbcType=VARCHAR},</if>
+                <if test="creator != null">#{creator,jdbcType=VARCHAR},</if>
+                <if test="creationtime != null">#{creationtime,jdbcType=TIMESTAMP},</if>
+                <if test="updatetime != null">#{updatetime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Gardenplantpestcontrolmanagement">
+        update GardenPlantPestControlManagement
+        <set>
+                <if test="pestname != null">
+                    PestName = #{pestname,jdbcType=VARCHAR},
+                </if>
+                <if test="controlmethod != null">
+                    ControlMethod = #{controlmethod,jdbcType=VARCHAR},
+                </if>
+                <if test="pesticidename != null">
+                    PesticideName = #{pesticidename,jdbcType=VARCHAR},
+                </if>
+                <if test="pesticidedosage != null">
+                    PesticideDosage = #{pesticidedosage,jdbcType=VARCHAR},
+                </if>
+                <if test="validityperiod != null">
+                    ValidityPeriod = #{validityperiod,jdbcType=VARCHAR},
+                </if>
+                <if test="creator != null">
+                    Creator = #{creator,jdbcType=VARCHAR},
+                </if>
+                <if test="creationtime != null">
+                    CreationTime = #{creationtime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updatetime != null">
+                    UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   PreventionId = #{preventionid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Gardenplantpestcontrolmanagement">
+        update GardenPlantPestControlManagement
+        set 
+            PestName =  #{pestname,jdbcType=VARCHAR},
+            ControlMethod =  #{controlmethod,jdbcType=VARCHAR},
+            PesticideName =  #{pesticidename,jdbcType=VARCHAR},
+            PesticideDosage =  #{pesticidedosage,jdbcType=VARCHAR},
+            ValidityPeriod =  #{validityperiod,jdbcType=VARCHAR},
+            Creator =  #{creator,jdbcType=VARCHAR},
+            CreationTime =  #{creationtime,jdbcType=TIMESTAMP},
+            UpdateTime =  #{updatetime,jdbcType=TIMESTAMP}
+        where   PreventionId = #{preventionid,jdbcType=INTEGER} 
+    </update>
+</mapper>
