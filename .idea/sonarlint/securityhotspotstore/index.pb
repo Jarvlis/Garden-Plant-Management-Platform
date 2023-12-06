@@ -28,3 +28,13 @@ e
 .src/main/java/org/plants/config/AppConfig.java,c\4\c433b830299980095799d4f94d9b1ae09f3cd6e9
 a
 1src/main/java/org/plants/config/MapperConfig.java,6\6\662b4a6656703b32da62adcebe96b1b881ac1370
+l
+<src/test/java/org/plants/Test/PlantsBasicInfoMapperTest.java,5\a\5aebd9df31b00082c292b309e546ffdc2d21973c
+D
+sql/Distribution.sql,4\c\4cfbaefef70ae9473850630d4b0ee9ffeb5ef292
+E
+sql/PlantDevision.sql,8\8\8810e744be6dab8419c78f609fe579fa80bc000b
+L
+sql/PlantMaintenanceView.sql,8\7\87c630c81fc9a3ad8d2f022d9f1a2eec503f550d
+H
+sql/PlantDevisonView.sql,f\f\ff2f757f55b8f3a521c70bb7c497d67b205fbd47
