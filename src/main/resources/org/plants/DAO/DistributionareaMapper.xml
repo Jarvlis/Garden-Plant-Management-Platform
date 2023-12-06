@@ -22,23 +22,28 @@
         from DistributionArea
         where  DistributionAreaID = #{distributionareaid,jdbcType=INTEGER} 
     </select>
-    <select id="selectByProvince" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="selectByProvince" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
-            DistributionAreaID
+        <include refid="Base_Column_List" />
         from DistributionArea
         where  Province like concat('%', #{province,jdbcType=VARCHAR}, '%')
     </select>
-    <select id="selectByCity" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="selectByCity" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
-            DistributionAreaID
+        <include refid="Base_Column_List" />
         from DistributionArea
         where  City like concat('%', #{city,jdbcType=VARCHAR}, '%')
     </select>
-    <select id="selectByCountry" parameterType="java.lang.String" resultType="java.lang.Integer">
+    <select id="selectByCountry" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
-            DistributionAreaID
+        <include refid="Base_Column_List" />
         from DistributionArea
         where  Country like concat('%', #{country,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectAll" resultType="org.plants.po.Distributionarea">
+        select
+            <include refid="Base_Column_List" />
+        from DistributionArea
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

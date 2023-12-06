@@ -12,22 +12,22 @@ public class Distributionarea implements Serializable {
     /**
      * 分布区域ID
      */
-    private Integer distributionareaid;
+    protected Integer distributionareaid;
 
     /**
      * 省
      */
-    private String province;
+    protected String province;
 
     /**
      * 市
      */
-    private String city;
+    protected String city;
 
     /**
      * 县
      */
-    private String country;
+    protected String country;
 
     private static final long serialVersionUID = 1L;
 
