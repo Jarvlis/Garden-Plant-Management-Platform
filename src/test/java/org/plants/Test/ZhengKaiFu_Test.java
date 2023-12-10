@@ -196,7 +196,7 @@ public class ZhengKaiFu_Test {
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectByGrowingenvironmentToConnection("工厂");
+        areas=platdevisionMapper.selectByGrowingenvironmentToConnection("热带");
         for(PlantDevision_User_DistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
