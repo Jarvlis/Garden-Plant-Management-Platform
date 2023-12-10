@@ -3,6 +3,7 @@ package org.plants.po;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -24,7 +25,7 @@ public class Plantmaintenance implements Serializable {
     /**
      * 执行时间
      */
-    protected Date executiontime;
+    protected Timestamp executiontime;
 
     /**
      * 执行地点
