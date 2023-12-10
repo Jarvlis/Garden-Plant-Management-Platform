@@ -10,7 +10,6 @@ import java.io.Serializable;
 public class PlantMaintenance_User_PlantsBasicInfo extends Plantmaintenance implements Serializable {
     private static final long serialVersionUID = 1L;
     private String anothername;
-    private String creator;
     private String userName;
 
     @Override

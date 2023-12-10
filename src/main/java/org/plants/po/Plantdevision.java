@@ -1,6 +1,7 @@
 package org.plants.po;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import lombok.Data;
 
@@ -53,12 +54,12 @@ public class Plantdevision implements Serializable {
     /**
      * 创建时间
      */
-    protected Date creationtime;
+    protected Timestamp creationtime;
 
     /**
      * 修改时间
      */
-    protected Date updatetime;
+    protected Timestamp updatetime;
 
     private static final long serialVersionUID = 1L;
 
