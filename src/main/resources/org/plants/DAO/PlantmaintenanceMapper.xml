@@ -28,81 +28,21 @@
     </select>
     <select id="selectByMaintenanceidToConnection" parameterType="java.lang.Long"
             resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
-        SELECT
-            pm.MaintenanceID,
-            pm.MissionName,
-            pd.AnotherName,
-            pm.ExecutionTime,
-            pm.ExecutionPlace,
-            u.userName,
-            pm.JobDescribtion
-        FROM
-            PlantMaintenance pm
-                LEFT JOIN
-            User u ON pm.userId = u.userId
-                LEFT JOIN
-            PlantsBasicInfo pbi ON pm.plantId = pbi.plantId
-                LEFT JOIN
-            PlantDevision pd ON pbi.devisionId = pd.devisionId
+        select * from PlantMaintenanceView
         where  MaintenanceID = #{maintenanceid,jdbcType=INTEGER}
     </select>
     <select id="selectByAnothernameToConnection" parameterType="java.lang.String"
             resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
-        SELECT
-            pm.MaintenanceID,
-            pm.MissionName,
-            pd.AnotherName,
-            pm.ExecutionTime,
-            pm.ExecutionPlace,
-            u.userName,
-            pm.JobDescribtion
-        FROM
-            PlantMaintenance pm
-                LEFT JOIN
-            User u ON pm.userId = u.userId
-                LEFT JOIN
-            PlantsBasicInfo pbi ON pm.plantId = pbi.plantId
-                LEFT JOIN
-            PlantDevision pd ON pbi.devisionId = pd.devisionId
+        select * from PlantMaintenanceView
         where AnotherName like concat('%', #{anothername,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByExecutionplaceToConnection" parameterType="java.lang.String"
             resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
-        SELECT
-            pm.MaintenanceID,
-            pm.MissionName,
-            pd.AnotherName,
-            pm.ExecutionTime,
-            pm.ExecutionPlace,
-            u.userName,
-            pm.JobDescribtion
-        FROM
-            PlantMaintenance pm
-                LEFT JOIN
-            User u ON pm.userId = u.userId
-                LEFT JOIN
-            PlantsBasicInfo pbi ON pm.plantId = pbi.plantId
-                LEFT JOIN
-            PlantDevision pd ON pbi.devisionId = pd.devisionId
+        select * from PlantMaintenanceView
         where ExecutionPlace like concat('%', #{executionplace,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByJobdescribtionToConnection" parameterType="java.lang.String" resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
-        SELECT
-            pm.MaintenanceID,
-            pm.MissionName,
-            pd.AnotherName,
-            pm.ExecutionTime,
-            pm.ExecutionPlace,
-            u.userName,
-            pm.JobDescribtion
-        FROM
-            PlantMaintenance pm
-                LEFT JOIN
-            User u ON pm.userId = u.userId
-                LEFT JOIN
-            PlantsBasicInfo pbi ON pm.plantId = pbi.plantId
-                LEFT JOIN
-            PlantDevision pd ON pbi.devisionId = pd.devisionId
+        select * from PlantMaintenanceView
         where JobDescribtion like concat('%', #{jobdescribtion,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectAll" resultType="org.plants.po.Plantmaintenance">
@@ -111,22 +51,7 @@
         from PlantMaintenance
     </select>
     <select id="selectAllToConnection" resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
-        SELECT
-            pm.MaintenanceID,
-            pm.MissionName,
-            pd.AnotherName,
-            pm.ExecutionTime,
-            pm.ExecutionPlace,
-            u.userName,
-            pm.JobDescribtion
-        FROM
-            PlantMaintenance pm
-                LEFT JOIN
-            User u ON pm.userId = u.userId
-                LEFT JOIN
-            PlantsBasicInfo pbi ON pm.plantId = pbi.plantId
-                LEFT JOIN
-            PlantDevision pd ON pbi.devisionId = pd.devisionId
+        select * from PlantMaintenanceView
     </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">

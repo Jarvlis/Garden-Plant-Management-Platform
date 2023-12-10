@@ -11,7 +11,7 @@ public class PlantMaintenance_User_PlantsBasicInfo extends Plantmaintenance impl
     private static final long serialVersionUID = 1L;
     private String anothername;
     private String creator;
-
+    private String userName;
 
     @Override
     public String toString() {
@@ -24,7 +24,7 @@ public class PlantMaintenance_User_PlantsBasicInfo extends Plantmaintenance impl
         sb.append(", 职务名称=").append(anothername);
         sb.append(", 执行时间=").append(executiontime);
         sb.append(", 执行地点=").append(executionplace);
-        sb.append(", 执行人员=").append(creator);
+        sb.append(", 执行人员=").append(userName);
         sb.append(", 任务描述=").append(jobdescribtion);
         sb.append("]");
         return sb.toString();

@@ -30,6 +30,7 @@ public class PlantDevision_User_DistributionArea extends Plantdevision implement
         sb.append(", 省=").append(province);
         sb.append(", 市=").append(city);
         sb.append(", 县=").append(country);
+        sb.append(", 生长环境=").append(growingenvironment);
         sb.append(", 创建者=").append(userName);
         sb.append(", 创建时间=").append(creationtime);
         sb.append(", 更新时间=").append(updatetime);

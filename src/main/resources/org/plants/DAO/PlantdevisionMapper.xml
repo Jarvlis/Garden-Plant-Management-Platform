@@ -86,206 +86,44 @@
     </select>
     <select id="selectByDevisionidToConnection" parameterType="java.lang.Long"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  DevisionID = #{devisionid,jdbcType=INTEGER}
     </select>
     <select id="selectByFamilynameToConnection" parameterType="java.lang.String"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  FamilyName like concat('%', #{familyname,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByGenusnameToConnection" parameterType="java.lang.String"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  Genusname like concat('%', #{genusname,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectBySpeciesnameToConnection" parameterType="java.lang.String"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  SpeciesName like concat('%', #{speciesname,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByAnothernameToConnection" parameterType="java.lang.String"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  AnotherName like concat('%', #{anothername,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByProvinceToConnection" parameterType="java.lang.String" resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  Province like concat('%', #{province,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByCityToConnection" parameterType="java.lang.String" resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where  City like concat('%', #{city,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByCountryToConnection" parameterType="java.lang.String" resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where Country like concat('%', #{country,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectByGrowingenvironmentToConnection" parameterType="java.lang.String"
             resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId
+        select * from PlantDevisionView
         where GrowingEnvironment like concat('%', #{growingenvironment,jdbcType=VARCHAR}, '%')
     </select>
     <select id="selectAll" resultType="org.plants.po.Plantdevision">
@@ -294,25 +132,7 @@
         from PlantDevision
     </select>
     <select id="selectAllToConnection" resultMap="ViewResultMap">
-        SELECT
-            pd.DevisionID,
-            pd.FamilyName,
-            pd.GenusName,
-            pd.SpeciesName,
-            pd.AnotherName,
-            da.Province,
-            da.City,
-            da.Country,
-            u.userName,
-            pd.CreationTime,
-            pd.UpdateTime,
-            pd.GrowingEnvironment
-        FROM
-            PlantDevision pd
-                LEFT JOIN
-            DistributionArea da ON pd.DistributionAreaID = da.DistributionAreaID
-                LEFT JOIN
-            User u ON pd.Creator = u.userId;
+        select * from PlantDevisionView
     </select>
 
 
