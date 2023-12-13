@@ -26,116 +26,117 @@ public class ZhengKaiFu_Test {
     PlantmaintenanceMapper platmaintenanceMapper;
     @Test
     public void testDistributionareaMapper(){
-//        //selectaall测试
-//        List<Distributionarea> distributions = new ArrayList<Distributionarea>();
-//        distributions=distributionareaMapper.selectAll();
-//        for(Distributionarea area : distributions){
-//            System.out.println(area.toString());
-//        }
+        //selectaall测试
+        List<Distributionarea> distributions = new ArrayList<Distributionarea>();
+        distributions=distributionareaMapper.selectAll();
+        for(Distributionarea area : distributions){
+            System.out.println(area.toString());
+        }
 
-//        //insert测试
-//        Distributionarea distribution=new Distributionarea();
-//        distribution.setDistributionareaid(600);
-//        distribution.setProvince("test");
-//        distribution.setCity("test");
-//        distribution.setCountry("test");
-//        distributionareaMapper.insert(distribution);
+        //insert测试
+        Distributionarea distribution=new Distributionarea();
+        distribution.setDistributionareaid(600);
+        distribution.setProvince("test");
+        distribution.setCity("test");
+        distribution.setCountry("test");
+        distributionareaMapper.insert(distribution);
 
-//        //select测试
-//        Distributionarea distributionarea=distributionareaMapper.selectByPrimaryKey((long)600);
-//        System.out.println(distributionarea.toString());
+        //select测试
+        Distributionarea distributionarea=distributionareaMapper.selectByPrimaryKey((long)600);
+        System.out.println(distributionarea.toString());
 
-//        //delete测试
-//        distributionareaMapper.deleteByPrimaryKey((long)600);
+        //delete测试
+        distributionareaMapper.deleteByPrimaryKey((long)600);
 
-//        //省查询
-//        List<Distributionarea> distributions = new ArrayList<Distributionarea>();
-//        distributions=distributionareaMapper.selectByProvince("贵州省");
-//        for(Distributionarea area:distributions){
-//            System.out.println(area.toString());
-//        }
-//        distributions.clear();
-//        //市查询
-//        distributions=distributionareaMapper.selectByCity("遵义");
-//        for(Distributionarea area:distributions){
-//            System.out.println(area.toString());
-//        }
-//        distributions.clear();
-//        //区查询
-//        distributions=distributionareaMapper.selectByCountry("区");
-//        for(Distributionarea area:distributions){
-//            System.out.println(area.toString());
-//        }
+        distributions.clear();
+        //省查询
+        distributions = new ArrayList<Distributionarea>();
+        distributions=distributionareaMapper.selectByProvince("贵州省");
+        for(Distributionarea area:distributions){
+            System.out.println(area.toString());
+        }
+        distributions.clear();
+        //市查询
+        distributions=distributionareaMapper.selectByCity("遵义");
+        for(Distributionarea area:distributions){
+            System.out.println(area.toString());
+        }
+        distributions.clear();
+        //区查询
+        distributions=distributionareaMapper.selectByCountry("区");
+        for(Distributionarea area:distributions){
+            System.out.println(area.toString());
+        }
 
-//        //update测试
-//        Distributionarea distribution=new Distributionarea();
-//        distribution.setDistributionareaid(600);
-//        distribution.setProvince("test");
-//        distribution.setCity("test");
-//        distribution.setCountry("test");
-//        distributionareaMapper.insert(distribution);
-//        distribution.setProvince("newtest");
-//        distributionareaMapper.updateByPrimaryKey(distribution);
-//        distributionareaMapper.deleteByPrimaryKey((long)600);
+        //update测试
+        distribution=new Distributionarea();
+        distribution.setDistributionareaid(600);
+        distribution.setProvince("test");
+        distribution.setCity("test");
+        distribution.setCountry("test");
+        distributionareaMapper.insert(distribution);
+        System.out.println(distributionareaMapper.toString());
+        distribution.setProvince("newtest");
+        distributionareaMapper.updateByPrimaryKey(distribution);
+        System.out.println(distributionareaMapper.toString());
+        distributionareaMapper.deleteByPrimaryKey((long)600);
     }
     @Test
     public void testPlantmaintenanceMapper(){
-//        //select测试
-//        List<Plantmaintenance> plantmaintenance=new ArrayList<Plantmaintenance>();
-//        plantmaintenance=platmaintenanceMapper.selectAll();
-//        for(Plantmaintenance plantmaintenance1:plantmaintenance){
-//            System.out.println(plantmaintenance1.toString());
-//        }
+        //select测试
+        List<Plantmaintenance> plantmaintenance=new ArrayList<Plantmaintenance>();
+        plantmaintenance=platmaintenanceMapper.selectAll();
+        for(Plantmaintenance plantmaintenance1:plantmaintenance){
+            System.out.println(plantmaintenance1.toString());
+        }
 
-//        //insert测试、主键查询
-//        Plantmaintenance plantmaintenance2=new Plantmaintenance();
-//        plantmaintenance2.setMaintenanceid(600);
-//        plantmaintenance2.setMissionname("test");
-//        plantmaintenance2.setExecutionplace("第二教学楼");
-//        plantmaintenance2.setPlantid(1);
-//        plantmaintenance2.setUserid(3);
-//        plantmaintenance2.setJobdescribtion("test");
-//        //platmaintenanceMapper.insert(plantmaintenance2);
-//        //System.out.println(platmaintenanceMapper.selectByPrimaryKey((long)600));
-//
-//        //update测试
-//        plantmaintenance2.setJobdescribtion("这是更新的测试");
-//        platmaintenanceMapper.updateByPrimaryKey(plantmaintenance2);
+        //insert测试、主键查询
+        Plantmaintenance plantmaintenance2=new Plantmaintenance();
+        plantmaintenance2.setMaintenanceid(600);
+        plantmaintenance2.setMissionname("test");
+        plantmaintenance2.setExecutionplace("第二教学楼");
+        plantmaintenance2.setPlantid(1);
+        plantmaintenance2.setUserid(3);
+        plantmaintenance2.setJobdescribtion("test");
+        platmaintenanceMapper.insert(plantmaintenance2);
+        System.out.println(platmaintenanceMapper.selectByPrimaryKey((long)600));
 
-//        //删除测试
-//        platmaintenanceMapper.deleteByPrimaryKey((long)600);
+        //update测试
+        plantmaintenance2.setJobdescribtion("这是更新的测试");
+        platmaintenanceMapper.updateByPrimaryKey(plantmaintenance2);
+        System.out.println(plantmaintenance2.toString());
+        //删除测试
+        platmaintenanceMapper.deleteByPrimaryKey((long)600);
     }
     @Test
     public void testPlantdevisionMapper(){
 
-//        //查找测试
-//        List<Plantdevision> plantdevisions = new ArrayList<Plantdevision>();
-//        plantdevisions=platdevisionMapper.selectAll();
-//        for(Plantdevision plantdevision : plantdevisions){
-//            System.out.println(plantdevision.toString());
-//        }
-
-//        //插入测试、更新测试、删除测试、单查找测试
-//        Plantdevision plantdevision=new Plantdevision();
-//        plantdevision.setDevisionid(600);
-//        plantdevision.setFamilyname("test");
-//        plantdevision.setGenusname("test");
-//        plantdevision.setSpeciesname("opopopo");
-//        plantdevision.setAnothername("999999");
-//        plantdevision.setDistributionareaid(60);
-//        plantdevision.setGrowingenvironment("环境恶劣");
-//        plantdevision.setCreator(1);
-//        //platdevisionMapper.insert(plantdevision);
-//        //System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-//        plantdevision.setFamilyname("newnewenwtest");
-//        plantdevision.setGenusname("test999999");
-//        plantdevision.setSpeciesname("o75423453popopo");
-//        plantdevision.setAnothername("9994534534534534999");
-//        plantdevision.setDistributionareaid(60);
-//        plantdevision.setGrowingenvironment("环境恶dsfsd劣");
-//        platdevisionMapper.updateByPrimaryKey(plantdevision);
-//        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-//        platdevisionMapper.deleteByPrimaryKey((long)600);
+        //查找测试
+        List<Plantdevision> plantdevisions = new ArrayList<Plantdevision>();
+        plantdevisions=platdevisionMapper.selectAll();
+        for(Plantdevision plantdevision : plantdevisions){
+            System.out.println(plantdevision.toString());
+        }
+        //插入测试、更新测试、删除测试、单查找测试
+        Plantdevision plantdevision=new Plantdevision();
+        plantdevision.setDevisionid(600);
+        plantdevision.setFamilyname("test");
+        plantdevision.setGenusname("test");
+        plantdevision.setSpeciesname("opopopo");
+        plantdevision.setAnothername("999999");
+        plantdevision.setDistributionareaid(60);
+        plantdevision.setGrowingenvironment("环境恶劣");
+        plantdevision.setCreator(1);
+        platdevisionMapper.insert(plantdevision);
+        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
+        plantdevision.setFamilyname("first");
+        plantdevision.setGenusname("second");
+        plantdevision.setAnothername("third");
+        plantdevision.setDistributionareaid(60);
+        plantdevision.setGrowingenvironment("环境恶劣++");
+        platdevisionMapper.updateByPrimaryKey(plantdevision);
+        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
+        platdevisionMapper.deleteByPrimaryKey((long)600);
     }
     @Test
     public void testDevisionView(){
