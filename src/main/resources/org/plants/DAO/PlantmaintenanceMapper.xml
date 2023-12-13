@@ -26,6 +26,33 @@
         from PlantMaintenance
         where  MaintenanceID = #{maintenanceid,jdbcType=INTEGER} 
     </select>
+    <select id="selectByMaintenanceidToConnection" parameterType="java.lang.Long"
+            resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
+        select * from PlantMaintenanceView
+        where  MaintenanceID = #{maintenanceid,jdbcType=INTEGER}
+    </select>
+    <select id="selectByAnothernameToConnection" parameterType="java.lang.String"
+            resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
+        select * from PlantMaintenanceView
+        where AnotherName like concat('%', #{anothername,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectByExecutionplaceToConnection" parameterType="java.lang.String"
+            resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
+        select * from PlantMaintenanceView
+        where ExecutionPlace like concat('%', #{executionplace,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectByJobdescribtionToConnection" parameterType="java.lang.String" resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
+        select * from PlantMaintenanceView
+        where JobDescribtion like concat('%', #{jobdescribtion,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectAll" resultType="org.plants.po.Plantmaintenance">
+        select
+        <include refid="Base_Column_List" />
+        from PlantMaintenance
+    </select>
+    <select id="selectAllToConnection" resultType="org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo">
+        select * from PlantMaintenanceView
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from PlantMaintenance
@@ -36,7 +63,7 @@
         ( MaintenanceID,MissionName,ExecutionTime
         ,ExecutionPlace,userId,JobDescribtion
         ,plantId)
-        values (#{maintenanceid,jdbcType=INTEGER},#{missionname,jdbcType=VARCHAR},#{executiontime,jdbcType=TIMESTAMP}
+        values (#{maintenanceid,jdbcType=INTEGER},#{missionname,jdbcType=VARCHAR},CURRENT_TIMESTAMP
         ,#{executionplace,jdbcType=VARCHAR},#{userid,jdbcType=INTEGER},#{jobdescribtion,jdbcType=VARCHAR}
         ,#{plantid,jdbcType=INTEGER})
     </insert>
@@ -67,9 +94,6 @@
                 <if test="missionname != null">
                     MissionName = #{missionname,jdbcType=VARCHAR},
                 </if>
-                <if test="executiontime != null">
-                    ExecutionTime = #{executiontime,jdbcType=TIMESTAMP},
-                </if>
                 <if test="executionplace != null">
                     ExecutionPlace = #{executionplace,jdbcType=VARCHAR},
                 </if>
@@ -89,7 +113,6 @@
         update PlantMaintenance
         set 
             MissionName =  #{missionname,jdbcType=VARCHAR},
-            ExecutionTime =  #{executiontime,jdbcType=TIMESTAMP},
             ExecutionPlace =  #{executionplace,jdbcType=VARCHAR},
             userId =  #{userid,jdbcType=INTEGER},
             JobDescribtion =  #{jobdescribtion,jdbcType=VARCHAR},

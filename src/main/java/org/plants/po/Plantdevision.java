@@ -1,6 +1,7 @@
 package org.plants.po;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import lombok.Data;
 
@@ -13,52 +14,52 @@ public class Plantdevision implements Serializable {
     /**
      * 分类管理ID
      */
-    private Integer devisionid;
+    protected Integer devisionid;
 
     /**
      * 科名
      */
-    private String familyname;
+    protected String familyname;
 
     /**
      * 属名
      */
-    private String genusname;
+    protected String genusname;
 
     /**
      * 种名
      */
-    private String speciesname;
+    protected String speciesname;
 
     /**
      * 别名
      */
-    private String anothername;
+    protected String anothername;
 
     /**
      * 分布区域
      */
-    private Integer distributionareaid;
+    protected Integer distributionareaid;
 
     /**
      * 生长环境
      */
-    private String growingenvironment;
+    protected String growingenvironment;
 
     /**
      * 创建人员
      */
-    private Integer creator;
+    protected Integer creator;
 
     /**
      * 创建时间
      */
-    private Date creationtime;
+    protected Timestamp creationtime;
 
     /**
      * 修改时间
      */
-    private Date updatetime;
+    protected Timestamp updatetime;
 
     private static final long serialVersionUID = 1L;
 
