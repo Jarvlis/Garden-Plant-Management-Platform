@@ -1,5 +1,6 @@
 package org.plants.Test;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.plants.DAO.UserMapper;
 import org.plants.DAO.UserroleMapper;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringJUnitConfig(value = {AppConfig.class})
+@Slf4j
 public class UserMapperTest {
 
     @Resource
@@ -44,12 +46,10 @@ public class UserMapperTest {
         // 验证结果
         assertEquals(1, result1);
         assertEquals(1, result2);
+
+        log.info("插入成功");
     }
 
-    @Test
-    public void testAccess() {
-        System.out.println("hello, world");
-    }
     @Test
     public void testSelectByPrimaryKey() {
 
@@ -68,7 +68,7 @@ public class UserMapperTest {
     @Test
     public void testUpdateByPrimaryKeySelective() {
         // 设置要更新的用户ID
-        int id = 5;
+        int id = 8;
 
         // 查询原始数据
         User original = userMapper.selectByPrimaryKey(id);
@@ -87,20 +87,24 @@ public class UserMapperTest {
         User updated = userMapper.selectByPrimaryKey(id);
         assertEquals("王二狗", updated.getUsername());
         assertEquals("00000000", updated.getUserpassword());
+
+        log.info("更新成功");
     }
 
     // 测试删除数据
     @Test
     public void testDeleteByPrimaryKey() {
         // 设置要删除的用户ID
-        int id = 5;
+        int id = 8;
 
         // 执行删除操作
-        int result1 = userMapper.deleteByPrimaryKey(id);
         int result2 = userroleMapper.deleteByPrimaryKey(id);
+        int result1 = userMapper.deleteByPrimaryKey(id);
 
         // 验证结果
         assertEquals(1, result1);
         assertEquals(1, result2);
+
+        log.info("删除成功");
     }
 }
