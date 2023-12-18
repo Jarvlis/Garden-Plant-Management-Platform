@@ -15,12 +15,14 @@ public class Plantdevision implements Serializable {
      * 分类管理ID
      */
     protected Integer devisionid;
-
+    /*
+     * 属种ID
+     */
+    protected Integer genusspeciesid;
     /**
      * 科名
      */
     protected String familyname;
-
     /**
      * 属名
      */
@@ -76,15 +78,16 @@ public class Plantdevision implements Serializable {
         }
         Plantdevision other = (Plantdevision) that;
         return (this.getDevisionid() == null ? other.getDevisionid() == null : this.getDevisionid().equals(other.getDevisionid()))
-            && (this.getFamilyname() == null ? other.getFamilyname() == null : this.getFamilyname().equals(other.getFamilyname()))
-            && (this.getGenusname() == null ? other.getGenusname() == null : this.getGenusname().equals(other.getGenusname()))
-            && (this.getSpeciesname() == null ? other.getSpeciesname() == null : this.getSpeciesname().equals(other.getSpeciesname()))
-            && (this.getAnothername() == null ? other.getAnothername() == null : this.getAnothername().equals(other.getAnothername()))
-            && (this.getDistributionareaid() == null ? other.getDistributionareaid() == null : this.getDistributionareaid().equals(other.getDistributionareaid()))
-            && (this.getGrowingenvironment() == null ? other.getGrowingenvironment() == null : this.getGrowingenvironment().equals(other.getGrowingenvironment()))
-            && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
-            && (this.getCreationtime() == null ? other.getCreationtime() == null : this.getCreationtime().equals(other.getCreationtime()))
-            && (this.getUpdatetime() == null ? other.getUpdatetime() == null : this.getUpdatetime().equals(other.getUpdatetime()));
+                && (this.getGenusspeciesid() == null ? other.getGenusspeciesid() == null : this.getGenusspeciesid().equals(other.getGenusspeciesid()))
+                && (this.getFamilyname() == null ? other.getFamilyname() == null : this.getFamilyname().equals(other.getFamilyname()))
+                && (this.getGenusname() == null ? other.getGenusname() == null : this.getGenusname().equals(other.getGenusname()))
+                && (this.getSpeciesname() == null ? other.getSpeciesname() == null : this.getSpeciesname().equals(other.getSpeciesname()))
+                && (this.getAnothername() == null ? other.getAnothername() == null : this.getAnothername().equals(other.getAnothername()))
+                && (this.getDistributionareaid() == null ? other.getDistributionareaid() == null : this.getDistributionareaid().equals(other.getDistributionareaid()))
+                && (this.getGrowingenvironment() == null ? other.getGrowingenvironment() == null : this.getGrowingenvironment().equals(other.getGrowingenvironment()))
+                && (this.getCreator() == null ? other.getCreator() == null : this.getCreator().equals(other.getCreator()))
+                && (this.getCreationtime() == null ? other.getCreationtime() == null : this.getCreationtime().equals(other.getCreationtime()))
+                && (this.getUpdatetime() == null ? other.getUpdatetime() == null : this.getUpdatetime().equals(other.getUpdatetime()));
     }
 
     @Override
@@ -92,6 +95,7 @@ public class Plantdevision implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getDevisionid() == null) ? 0 : getDevisionid().hashCode());
+        result = prime * result + ((getGenusspeciesid() == null) ? 0 : getGenusspeciesid().hashCode());
         result = prime * result + ((getFamilyname() == null) ? 0 : getFamilyname().hashCode());
         result = prime * result + ((getGenusname() == null) ? 0 : getGenusname().hashCode());
         result = prime * result + ((getSpeciesname() == null) ? 0 : getSpeciesname().hashCode());
@@ -111,6 +115,7 @@ public class Plantdevision implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", devisionid=").append(devisionid);
+        sb.append(", genusspeciesid=").append(genusspeciesid);
         sb.append(", familyname=").append(familyname);
         sb.append(", genusname=").append(genusname);
         sb.append(", speciesname=").append(speciesname);

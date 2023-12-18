@@ -1,12 +1,12 @@
 CREATE VIEW PlantMaintenanceView AS
 SELECT
-    pm.MaintenanceID AS 养护编号,
-    pm.MissionName AS 任务名称,
-    pd.AnotherName AS 植物名称,
-    pm.ExecutionTime AS 执行时间,
-    pm.ExecutionPlace AS 执行地点,
-    u.userName AS 执行人员,
-    pm.JobDescribtion AS 任务描述
+    pm.MaintenanceID,
+    pm.MissionName,
+    pd.AnotherName,
+    pm.ExecutionTime,
+    pm.ExecutionPlace,
+    u.userName,
+    pm.JobDescribtion
 FROM
     PlantMaintenance pm
 LEFT JOIN

@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 import org.plants.DAO.DistributionareaMapper;
 import org.plants.DAO.PlantdevisionMapper;
 import org.plants.DAO.PlantmaintenanceMapper;
+import org.plants.Service.PLantDevisionService;
 import org.plants.config.AppConfig;
 import org.plants.po.Distributionarea;
-import org.plants.po.Plantdevision;
 import org.plants.po.Plantmaintenance;
-import org.plants.pojo.PlantDevision_User_DistributionArea;
+import org.plants.pojo.PlantDevisionUserDistributionArea;
 import org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
@@ -24,6 +24,8 @@ public class ZhengKaiFu_Test {
     PlantdevisionMapper platdevisionMapper;
     @Resource
     PlantmaintenanceMapper platmaintenanceMapper;
+    @Resource
+    PLantDevisionService pLantDevisionService;
     @Test
     public void testDistributionareaMapper(){
         //selectaall测试
@@ -111,39 +113,65 @@ public class ZhengKaiFu_Test {
     @Test
     public void testPlantdevisionMapper(){
 
-        //查找测试
-        List<Plantdevision> plantdevisions = new ArrayList<Plantdevision>();
-        plantdevisions=platdevisionMapper.selectAll();
-        for(Plantdevision plantdevision : plantdevisions){
-            System.out.println(plantdevision.toString());
-        }
-        //插入测试、更新测试、删除测试、单查找测试
-        Plantdevision plantdevision=new Plantdevision();
-        plantdevision.setDevisionid(600);
-        plantdevision.setFamilyname("test");
-        plantdevision.setGenusname("test");
-        plantdevision.setSpeciesname("opopopo");
-        plantdevision.setAnothername("999999");
-        plantdevision.setDistributionareaid(60);
-        plantdevision.setGrowingenvironment("环境恶劣");
-        plantdevision.setCreator(1);
-        platdevisionMapper.insert(plantdevision);
-        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-        plantdevision.setFamilyname("first");
-        plantdevision.setGenusname("second");
-        plantdevision.setAnothername("third");
-        plantdevision.setDistributionareaid(60);
-        plantdevision.setGrowingenvironment("环境恶劣++");
-        platdevisionMapper.updateByPrimaryKey(plantdevision);
-        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-        platdevisionMapper.deleteByPrimaryKey((long)600);
+//        //查找测试
+//        List<Plantdevision> plantdevisions = new ArrayList<Plantdevision>();
+//        plantdevisions=platdevisionMapper.selectAll();
+//        for(Plantdevision plantdevision : plantdevisions){
+//            System.out.println(plantdevision.toString());
+//        }
+//        //插入测试、更新测试、删除测试、单查找测试
+//        Plantdevision plantdevision=new Plantdevision();
+//        plantdevision.setDevisionid(600);
+//        plantdevision.setFamilyname("test");
+//        plantdevision.setGenusname("test");
+//        plantdevision.setSpeciesname("opopopo");
+//        plantdevision.setAnothername("999999");
+//        plantdevision.setDistributionareaid(60);
+//        plantdevision.setGrowingenvironment("环境恶劣");
+//        plantdevision.setCreator(1);
+//        platdevisionMapper.insert(plantdevision);
+//        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
+//        plantdevision.setFamilyname("first");
+//        plantdevision.setGenusname("second");
+//        plantdevision.setAnothername("third");
+//        plantdevision.setDistributionareaid(60);
+//        plantdevision.setGrowingenvironment("环境恶劣++");
+//        platdevisionMapper.updateByPrimaryKey(plantdevision);
+//        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
+//        platdevisionMapper.deleteByPrimaryKey((long)600);
+        platdevisionMapper.deleteByPrimaryKey((long)1000);
+        PlantDevisionUserDistributionArea platdevisionEND = new PlantDevisionUserDistributionArea();
+        platdevisionEND.setDevisionid(1000);
+        platdevisionEND.setFamilyname("北京林业大学");
+        platdevisionEND.setGenusname("信息学院");
+        platdevisionEND.setSpeciesname("计算机科学与技术");
+        platdevisionEND.setAnothername("计算机班级");
+        platdevisionEND.setProvince("内蒙古");
+        platdevisionEND.setCity("赤峰市");
+        platdevisionEND.setCountry("元宝山区");
+        platdevisionEND.setGrowingenvironment("环境优美，景色迷人");
+        platdevisionEND.setUserName("系统管理员");
+        pLantDevisionService.insertOnePlantDevision(platdevisionEND);
+
+        platdevisionEND.setFamilyname("北京林业大学new");
+        platdevisionEND.setGenusname("信息学院new");
+        platdevisionEND.setSpeciesname("计算机科学与技术new");
+        platdevisionEND.setAnothername("计算机班级");
+        platdevisionEND.setProvince("内蒙古new");
+        platdevisionEND.setCity("赤峰市new");
+        platdevisionEND.setCountry("元宝山区new");
+        platdevisionEND.setGrowingenvironment("环境优美，景色迷人new");
+        platdevisionEND.setUserName("系统管理员");
+        pLantDevisionService.updateOnePlantDevision(platdevisionEND);
+
+
     }
     @Test
     public void testDevisionView(){
         //selectall();
-        List<PlantDevision_User_DistributionArea> areas = new ArrayList<PlantDevision_User_DistributionArea>();
+        List<PlantDevisionUserDistributionArea> areas = new ArrayList<PlantDevisionUserDistributionArea>();
         areas=platdevisionMapper.selectAllToConnection();
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
@@ -154,25 +182,25 @@ public class ZhengKaiFu_Test {
 
         //名查询
         areas=platdevisionMapper.selectByFamilynameToConnection("科");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
         areas=platdevisionMapper.selectByGenusnameToConnection("属");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
         areas=platdevisionMapper.selectBySpeciesnameToConnection("长蕊珍珠菜");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
         areas=platdevisionMapper.selectByAnothernameToConnection("草");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
@@ -181,24 +209,24 @@ public class ZhengKaiFu_Test {
         //区域查询
 
         areas=platdevisionMapper.selectByProvinceToConnection("广东省");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
         areas=platdevisionMapper.selectByCityToConnection("杭州");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
         areas=platdevisionMapper.selectByCountryToConnection("区");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
         areas=platdevisionMapper.selectByGrowingenvironmentToConnection("热带");
-        for(PlantDevision_User_DistributionArea ppp:areas){
+        for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
