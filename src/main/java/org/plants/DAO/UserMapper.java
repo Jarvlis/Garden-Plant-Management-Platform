@@ -17,6 +17,8 @@ public interface UserMapper {
 
     UserWithRole selectUserRoleByPrimaryKey(Integer id);
 
+    UserWithRole selectUserRoleByUsername(String username);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

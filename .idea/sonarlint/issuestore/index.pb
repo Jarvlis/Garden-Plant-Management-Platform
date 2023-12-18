@@ -38,3 +38,13 @@ L
 sql/PlantMaintenanceView.sql,8\7\87c630c81fc9a3ad8d2f022d9f1a2eec503f550d
 H
 sql/PlantDevisonView.sql,f\f\ff2f757f55b8f3a521c70bb7c497d67b205fbd47
+e
+5src/main/java/org/plants/DAO/PlantdevisionMapper.java,6\7\6701bc9fdf1db20c7b1214ef0f8566bd49a8c0c8
+b
+2src/test/java/org/plants/Test/ZhengKaiFu_Test.java,e\5\e52c457a73653453d3a454421c5626797a8a8ada
+\
+,src/main/java/org/plants/DAO/UserMapper.java,8\8\8890fc6350617aa500f5737b30410181fafea2d4
+`
+0src/main/java/org/plants/DAO/UserroleMapper.java,1\5\159767146f871a769937c4567245a7c9b269ed0c
+z
+Jsrc/test/java/org/plants/Test/MonitoringModelTest/TestEquipmentMapper.java,f\5\f51c5e749813f3aaa60de33e55be19865674295d

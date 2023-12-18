@@ -34,6 +34,13 @@
         from User
         where  userId = #{userid,jdbcType=INTEGER} 
     </select>
+    <select id="selectUserRoleByUsername" resultType="org.plants.pojo.UserWithRole">
+        select u.*,r.rolename
+        from User u
+        left join UserRole ur on u.userId = ur.userId
+        left join Role r on ur.roleId = r.roleId
+        where  u.userName = #{username,jdbcType=VARCHAR}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from User
