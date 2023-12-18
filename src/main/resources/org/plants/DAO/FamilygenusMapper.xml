@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.FamilygenusMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Familygenus">
+            <id property="familygenusid" column="FamilyGenusID" jdbcType="INTEGER"/>
+            <result property="familyname" column="FamilyName" jdbcType="VARCHAR"/>
+            <result property="genusname" column="GenusName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        FamilyGenusID,FamilyName,GenusName
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from FamilyGenus
+        where  FamilyGenusID = #{familygenusid,jdbcType=INTEGER} 
+    </select>
+    <select id="selectByAllTYPE" resultMap="BaseResultMap" parameterType="org.plants.po.Familygenus">
+        select <include refid="Base_Column_List" /> from FamilyGenus
+        where FamilyName=#{familyname,jdbcType=VARCHAR} and GenusName=#{genusname,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from FamilyGenus
+        where  FamilyGenusID = #{familygenusid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="FamilyGenusID" keyProperty="familygenusid" parameterType="org.plants.po.Familygenus" useGeneratedKeys="true">
+        insert into FamilyGenus
+        ( FamilyGenusID,FamilyName,GenusName
+        )
+        values (#{familygenusid,jdbcType=INTEGER},#{familyname,jdbcType=VARCHAR},#{genusname,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="FamilyGenusID" keyProperty="familygenusid" parameterType="org.plants.po.Familygenus" useGeneratedKeys="true">
+        insert into FamilyGenus
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="familygenusid != null">FamilyGenusID,</if>
+                <if test="familyname != null">FamilyName,</if>
+                <if test="genusname != null">GenusName,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="familygenusid != null">#{familygenusid,jdbcType=INTEGER},</if>
+                <if test="familyname != null">#{familyname,jdbcType=VARCHAR},</if>
+                <if test="genusname != null">#{genusname,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Familygenus">
+        update FamilyGenus
+        <set>
+                <if test="familyname != null">
+                    FamilyName = #{familyname,jdbcType=VARCHAR},
+                </if>
+                <if test="genusname != null">
+                    GenusName = #{genusname,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   FamilyGenusID = #{familygenusid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Familygenus">
+        update FamilyGenus
+        set 
+            FamilyName =  #{familyname,jdbcType=VARCHAR},
+            GenusName =  #{genusname,jdbcType=VARCHAR}
+        where   FamilyGenusID = #{familygenusid,jdbcType=INTEGER} 
+    </update>
+</mapper>

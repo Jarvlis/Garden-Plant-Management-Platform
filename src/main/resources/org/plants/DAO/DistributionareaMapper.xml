@@ -45,6 +45,12 @@
             <include refid="Base_Column_List" />
         from DistributionArea
     </select>
+    <select id="selectByAllTYPE" resultMap="BaseResultMap" parameterType="org.plants.po.Distributionarea">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where Province = #{province,jdbcType=VARCHAR} and Country=#{country,jdbcType=VARCHAR} and City=#{city,jdbcType=VARCHAR}
+    </select>
 
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
         delete from DistributionArea

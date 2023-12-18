@@ -3,7 +3,7 @@ package org.plants.DAO;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.plants.po.Plantdevision;
-import org.plants.pojo.PlantDevision_User_DistributionArea;
+import org.plants.pojo.PlantDevisionUserDistributionArea;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,12 +21,13 @@ public interface PlantdevisionMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(Plantdevision record);
-
+    int insertPlantDevision(Plantdevision record);
     int insertSelective(Plantdevision record);
 
     Plantdevision selectByPrimaryKey(Long id);
     List<Plantdevision> selectAll();
     List<Plantdevision> selectByAnothernamePlantdevisions(String anothername);
+    Plantdevision selectByAnothernamePlantdevisionsOnly(String anothername);
     List<Plantdevision> selectByFamilynamePlantdevisions(String familyname);
     List<Plantdevision> selectByGenusnamePlantdevisions(String genusname);
     List<Plantdevision> selectBySpeciesnamePlantdevisions(String speciesname);
@@ -34,26 +35,26 @@ public interface PlantdevisionMapper {
     int updateByPrimaryKeySelective(Plantdevision record);
 
     int updateByPrimaryKey(Plantdevision record);
-
+    int updateByAnothernamePlantdevisionsOnly(Plantdevision record);
     /*
     PlantDevision_User_DistributionArea类
      */
     //ID查询
-    PlantDevision_User_DistributionArea selectByDevisionidToConnection(Long id);
+    PlantDevisionUserDistributionArea selectByDevisionidToConnection(Long id);
 
     //名查询
-    List<PlantDevision_User_DistributionArea> selectByFamilynameToConnection(String familyname);
-    List<PlantDevision_User_DistributionArea> selectByGenusnameToConnection(String genusname);
-    List<PlantDevision_User_DistributionArea> selectBySpeciesnameToConnection(String specisname);
-    List<PlantDevision_User_DistributionArea> selectByAnothernameToConnection(String anothername);
-
+    List<PlantDevisionUserDistributionArea> selectByFamilynameToConnection(String familyname);
+    List<PlantDevisionUserDistributionArea> selectByGenusnameToConnection(String genusname);
+    List<PlantDevisionUserDistributionArea> selectBySpeciesnameToConnection(String specisname);
+    List<PlantDevisionUserDistributionArea> selectByAnothernameToConnection(String anothername);
+    PlantDevisionUserDistributionArea selectByAnothernameToTotal(String anothername);
     //区域查询
-    List<PlantDevision_User_DistributionArea> selectByProvinceToConnection(String province);
+    List<PlantDevisionUserDistributionArea> selectByProvinceToConnection(String province);
 
-    List<PlantDevision_User_DistributionArea> selectByCityToConnection(String city);
-    List<PlantDevision_User_DistributionArea> selectByCountryToConnection(String country);
-    List<PlantDevision_User_DistributionArea> selectByGrowingenvironmentToConnection(String growingenvironment);
-    List<PlantDevision_User_DistributionArea> selectAllToConnection();
+    List<PlantDevisionUserDistributionArea> selectByCityToConnection(String city);
+    List<PlantDevisionUserDistributionArea> selectByCountryToConnection(String country);
+    List<PlantDevisionUserDistributionArea> selectByGrowingenvironmentToConnection(String growingenvironment);
+    List<PlantDevisionUserDistributionArea> selectAllToConnection();
 
 
 

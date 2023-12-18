@@ -2,13 +2,11 @@ package org.plants.pojo;
 
 import lombok.Data;
 import org.plants.po.Plantdevision;
-import org.plants.po.User;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Data
-public class PlantDevision_User_DistributionArea extends Plantdevision implements Serializable {
+public class PlantDevisionUserDistributionArea extends Plantdevision implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String province;
