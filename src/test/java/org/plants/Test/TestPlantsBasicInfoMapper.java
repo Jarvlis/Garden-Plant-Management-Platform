@@ -1,6 +1,5 @@
 package org.plants.Test;
 
-import org.apache.ibatis.annotations.Param;
 import org.junit.jupiter.api.Test;
 import org.plants.DAO.PestcontrolstrategiesMapper;
 import org.plants.DAO.PlantimagesMapper;
@@ -20,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringJUnitConfig(value = {AppConfig.class})
-public class PlantsBasicInfoMapperTest {
+public class TestPlantsBasicInfoMapper {
     @Resource
     private PlantsbasicinfoMapper plantsBasicInfoMapper;
 
