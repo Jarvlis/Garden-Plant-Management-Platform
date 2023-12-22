@@ -20,17 +20,17 @@ public interface PlantdevisionMapper {
 
     int deleteByPrimaryKey(Long id);
 
-    int insert(Plantdevision record);
+    //int insert(Plantdevision record);
     int insertPlantDevision(Plantdevision record);
-    int insertSelective(Plantdevision record);
+    //int insertSelective(Plantdevision record);
 
     Plantdevision selectByPrimaryKey(Long id);
     List<Plantdevision> selectAll();
     List<Plantdevision> selectByAnothernamePlantdevisions(String anothername);
     Plantdevision selectByAnothernamePlantdevisionsOnly(String anothername);
-    List<Plantdevision> selectByFamilynamePlantdevisions(String familyname);
-    List<Plantdevision> selectByGenusnamePlantdevisions(String genusname);
-    List<Plantdevision> selectBySpeciesnamePlantdevisions(String speciesname);
+//    List<Plantdevision> selectByFamilynamePlantdevisions(String familyname);
+//    List<Plantdevision> selectByGenusnamePlantdevisions(String genusname);
+//    List<Plantdevision> selectBySpeciesnamePlantdevisions(String speciesname);
     List<Plantdevision> selectByGrowingenvironmentPlantdevisions(String growingenvironment);
     int updateByPrimaryKeySelective(Plantdevision record);
 
