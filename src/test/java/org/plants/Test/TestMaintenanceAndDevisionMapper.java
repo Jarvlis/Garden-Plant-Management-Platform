@@ -17,15 +17,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringJUnitConfig(value = {AppConfig.class})
-public class ZhengKaiFu_Test {
+public class TestMaintenanceAndDevisionMapper {
     @Resource
     DistributionareaMapper distributionareaMapper;
     @Resource
-    PlantdevisionMapper platdevisionMapper;
+    PlantdevisionMapper plantdevisionMapper;
     @Resource
-    PlantmaintenanceMapper platmaintenanceMapper;
+    PlantmaintenanceMapper plantmaintenanceMapper;
     @Resource
-    PLantDevisionService pLantDevisionService;
+    PLantDevisionService plantDevisionService;
     @Test
     public void testDistributionareaMapper(){
         //selectaall测试
@@ -87,7 +87,7 @@ public class ZhengKaiFu_Test {
     public void testPlantmaintenanceMapper(){
         //select测试
         List<Plantmaintenance> plantmaintenance=new ArrayList<Plantmaintenance>();
-        plantmaintenance=platmaintenanceMapper.selectAll();
+        plantmaintenance= plantmaintenanceMapper.selectAll();
         for(Plantmaintenance plantmaintenance1:plantmaintenance){
             System.out.println(plantmaintenance1.toString());
         }
@@ -100,19 +100,19 @@ public class ZhengKaiFu_Test {
         plantmaintenance2.setPlantid(1);
         plantmaintenance2.setUserid(3);
         plantmaintenance2.setJobdescribtion("test");
-        platmaintenanceMapper.insert(plantmaintenance2);
-        System.out.println(platmaintenanceMapper.selectByPrimaryKey((long)600));
+        plantmaintenanceMapper.insert(plantmaintenance2);
+        System.out.println(plantmaintenanceMapper.selectByPrimaryKey((long)600));
 
         //update测试
         plantmaintenance2.setJobdescribtion("这是更新的测试");
-        platmaintenanceMapper.updateByPrimaryKey(plantmaintenance2);
+        plantmaintenanceMapper.updateByPrimaryKey(plantmaintenance2);
         System.out.println(plantmaintenance2.toString());
         //删除测试
-        platmaintenanceMapper.deleteByPrimaryKey((long)600);
+        plantmaintenanceMapper.deleteByPrimaryKey((long)600);
     }
     @Test
     public void testPlantdevisionMapper(){
-        platdevisionMapper.deleteByPrimaryKey((long)1000);
+        plantdevisionMapper.deleteByPrimaryKey((long)1000);
         PlantDevisionUserDistributionArea platdevisionEND = new PlantDevisionUserDistributionArea();
         platdevisionEND.setDevisionid(1000);
         platdevisionEND.setFamilyname("北京林业大学");
@@ -124,7 +124,7 @@ public class ZhengKaiFu_Test {
         platdevisionEND.setCountry("元宝山区");
         platdevisionEND.setGrowingenvironment("环境优美，景色迷人");
         platdevisionEND.setUserName("系统管理员");
-        pLantDevisionService.insertOnePlantDevision(platdevisionEND);
+        plantDevisionService.insertOnePlantDevision(platdevisionEND);
 
         platdevisionEND.setFamilyname("北京林业大学new");
         platdevisionEND.setGenusname("信息学院new");
@@ -135,7 +135,7 @@ public class ZhengKaiFu_Test {
         platdevisionEND.setCountry("元宝山区new");
         platdevisionEND.setGrowingenvironment("环境优美，景色迷人new");
         platdevisionEND.setUserName("系统管理员");
-        pLantDevisionService.updateOnePlantDevision(platdevisionEND);
+        plantDevisionService.updateOnePlantDevision(platdevisionEND);
 
 
     }
@@ -143,36 +143,36 @@ public class ZhengKaiFu_Test {
     public void testDevisionView(){
         //selectall();
         List<PlantDevisionUserDistributionArea> areas = new ArrayList<PlantDevisionUserDistributionArea>();
-        areas=platdevisionMapper.selectAllToConnection();
+        areas= plantdevisionMapper.selectAllToConnection();
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
 
-        System.out.println(platdevisionMapper.selectByDevisionidToConnection((long)3));
+        System.out.println(plantdevisionMapper.selectByDevisionidToConnection((long)3));
 
 
         //名查询
-        areas=platdevisionMapper.selectByFamilynameToConnection("科");
+        areas= plantdevisionMapper.selectByFamilynameToConnection("科");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectByGenusnameToConnection("属");
+        areas= plantdevisionMapper.selectByGenusnameToConnection("属");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectBySpeciesnameToConnection("长蕊珍珠菜");
+        areas= plantdevisionMapper.selectBySpeciesnameToConnection("长蕊珍珠菜");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectByAnothernameToConnection("草");
+        areas= plantdevisionMapper.selectByAnothernameToConnection("草");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
@@ -181,24 +181,24 @@ public class ZhengKaiFu_Test {
 
         //区域查询
 
-        areas=platdevisionMapper.selectByProvinceToConnection("广东省");
+        areas= plantdevisionMapper.selectByProvinceToConnection("广东省");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectByCityToConnection("杭州");
+        areas= plantdevisionMapper.selectByCityToConnection("杭州");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
-        areas=platdevisionMapper.selectByCountryToConnection("区");
+        areas= plantdevisionMapper.selectByCountryToConnection("区");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
         areas.clear();
 
-        areas=platdevisionMapper.selectByGrowingenvironmentToConnection("热带");
+        areas= plantdevisionMapper.selectByGrowingenvironmentToConnection("热带");
         for(PlantDevisionUserDistributionArea ppp:areas){
             System.out.println(ppp.toString());
         }
@@ -207,28 +207,28 @@ public class ZhengKaiFu_Test {
     @Test
     public void testMaintenanceView(){
         List<PlantMaintenance_User_PlantsBasicInfo> pls=new ArrayList<PlantMaintenance_User_PlantsBasicInfo>();
-        pls=platmaintenanceMapper.selectAllToConnection();
+        pls= plantmaintenanceMapper.selectAllToConnection();
         for(PlantMaintenance_User_PlantsBasicInfo ppp:pls){
             System.out.println(ppp.toString());
         }
         pls.clear();
 
-        pls=platmaintenanceMapper.selectByJobdescribtionToConnection("执行");
+        pls= plantmaintenanceMapper.selectByJobdescribtionToConnection("执行");
         for(PlantMaintenance_User_PlantsBasicInfo ppp:pls){
             System.out.println(ppp.toString());
         }
         pls.clear();
-        pls=platmaintenanceMapper.selectByAnothernameToConnection("草");
+        pls= plantmaintenanceMapper.selectByAnothernameToConnection("草");
         for(PlantMaintenance_User_PlantsBasicInfo ppp:pls){
             System.out.println(ppp.toString());
         }
         pls.clear();
-        pls=platmaintenanceMapper.selectByExecutionplaceToConnection("工厂");
+        pls= plantmaintenanceMapper.selectByExecutionplaceToConnection("工厂");
         for(PlantMaintenance_User_PlantsBasicInfo ppp:pls){
             System.out.println(ppp.toString());
         }
         pls.clear();
-        PlantMaintenance_User_PlantsBasicInfo plantMaintenanceUserPlantsBasicInfo=platmaintenanceMapper.selectByMaintenanceidToConnection((long)3);
+        PlantMaintenance_User_PlantsBasicInfo plantMaintenanceUserPlantsBasicInfo= plantmaintenanceMapper.selectByMaintenanceidToConnection((long)3);
         System.out.println(plantMaintenanceUserPlantsBasicInfo.toString());
 
 

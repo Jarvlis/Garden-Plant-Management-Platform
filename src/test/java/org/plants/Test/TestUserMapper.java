@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringJUnitConfig(value = {AppConfig.class})
 @Slf4j
-public class UserMapperTest {
+public class TestUserMapper {
 
     @Resource
     UserMapper userMapper;
