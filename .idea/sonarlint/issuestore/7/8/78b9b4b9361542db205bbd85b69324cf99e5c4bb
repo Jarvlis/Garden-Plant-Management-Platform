@@ -1,6 +1,0 @@
-
-r	java:S116"XRename this field "MaintenanceID" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿ºãÔÿÿÿÿÿ
-k	java:S116"VRename this field "MissionName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÔ‘”
-r	java:S116"XRename this field "ExecutionTime" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ðÂû‡þÿÿÿÿ
-s	java:S116"YRename this field "ExecutionPlace" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(›ðÛÌüÿÿÿÿ
-s	java:S116"YRename this field "JobDescribtion" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(øƒÌýÿÿÿÿÿ

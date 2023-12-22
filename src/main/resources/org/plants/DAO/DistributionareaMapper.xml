@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.DistributionareaMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Distributionarea">
+            <id property="distributionareaid" column="DistributionAreaID" jdbcType="INTEGER"/>
+            <result property="province" column="Province" jdbcType="VARCHAR"/>
+            <result property="city" column="City" jdbcType="VARCHAR"/>
+            <result property="country" column="Country" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        DistributionAreaID,Province,City,
+        Country
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where  DistributionAreaID = #{distributionareaid,jdbcType=INTEGER} 
+    </select>
+    <select id="selectByProvince" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where  Province like concat('%', #{province,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectByCity" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where  City like concat('%', #{city,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectByCountry" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where  Country like concat('%', #{country,jdbcType=VARCHAR}, '%')
+    </select>
+    <select id="selectAll" resultType="org.plants.po.Distributionarea">
+        select
+            <include refid="Base_Column_List" />
+        from DistributionArea
+    </select>
+    <select id="selectByAllTYPE" resultMap="BaseResultMap" parameterType="org.plants.po.Distributionarea">
+        select
+        <include refid="Base_Column_List" />
+        from DistributionArea
+        where Province = #{province,jdbcType=VARCHAR} and Country=#{country,jdbcType=VARCHAR} and City=#{city,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from DistributionArea
+        where  DistributionAreaID = #{distributionareaid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="DistributionAreaID" keyProperty="distributionareaid" parameterType="org.plants.po.Distributionarea" useGeneratedKeys="true">
+        insert into DistributionArea
+        ( DistributionAreaID,Province,City
+        ,Country)
+        values (#{distributionareaid,jdbcType=INTEGER},#{province,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR}
+        ,#{country,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="DistributionAreaID" keyProperty="distributionareaid" parameterType="org.plants.po.Distributionarea" useGeneratedKeys="true">
+        insert into DistributionArea
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="distributionareaid != null">DistributionAreaID,</if>
+                <if test="province != null">Province,</if>
+                <if test="city != null">City,</if>
+                <if test="country != null">Country,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="distributionareaid != null">#{distributionareaid,jdbcType=INTEGER},</if>
+                <if test="province != null">#{province,jdbcType=VARCHAR},</if>
+                <if test="city != null">#{city,jdbcType=VARCHAR},</if>
+                <if test="country != null">#{country,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Distributionarea">
+        update DistributionArea
+        <set>
+                <if test="province != null">
+                    Province = #{province,jdbcType=VARCHAR},
+                </if>
+                <if test="city != null">
+                    City = #{city,jdbcType=VARCHAR},
+                </if>
+                <if test="country != null">
+                    Country = #{country,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   DistributionAreaID = #{distributionareaid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Distributionarea">
+        update DistributionArea
+        set 
+            Province =  #{province,jdbcType=VARCHAR},
+            City =  #{city,jdbcType=VARCHAR},
+            Country =  #{country,jdbcType=VARCHAR}
+        where   DistributionAreaID = #{distributionareaid,jdbcType=INTEGER} 
+    </update>
+</mapper>
