@@ -112,33 +112,6 @@ public class ZhengKaiFu_Test {
     }
     @Test
     public void testPlantdevisionMapper(){
-
-//        //查找测试
-//        List<Plantdevision> plantdevisions = new ArrayList<Plantdevision>();
-//        plantdevisions=platdevisionMapper.selectAll();
-//        for(Plantdevision plantdevision : plantdevisions){
-//            System.out.println(plantdevision.toString());
-//        }
-//        //插入测试、更新测试、删除测试、单查找测试
-//        Plantdevision plantdevision=new Plantdevision();
-//        plantdevision.setDevisionid(600);
-//        plantdevision.setFamilyname("test");
-//        plantdevision.setGenusname("test");
-//        plantdevision.setSpeciesname("opopopo");
-//        plantdevision.setAnothername("999999");
-//        plantdevision.setDistributionareaid(60);
-//        plantdevision.setGrowingenvironment("环境恶劣");
-//        plantdevision.setCreator(1);
-//        platdevisionMapper.insert(plantdevision);
-//        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-//        plantdevision.setFamilyname("first");
-//        plantdevision.setGenusname("second");
-//        plantdevision.setAnothername("third");
-//        plantdevision.setDistributionareaid(60);
-//        plantdevision.setGrowingenvironment("环境恶劣++");
-//        platdevisionMapper.updateByPrimaryKey(plantdevision);
-//        System.out.println(platdevisionMapper.selectByPrimaryKey((long)600).toString());
-//        platdevisionMapper.deleteByPrimaryKey((long)600);
         platdevisionMapper.deleteByPrimaryKey((long)1000);
         PlantDevisionUserDistributionArea platdevisionEND = new PlantDevisionUserDistributionArea();
         platdevisionEND.setDevisionid(1000);
