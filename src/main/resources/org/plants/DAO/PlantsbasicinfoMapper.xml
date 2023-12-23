@@ -64,14 +64,14 @@
         SELECT pb.*, pi.*, pd.*, pcs.*,pm.*
         FROM PlantsBasicInfo pb
                  LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
-                 LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+                 LEFT JOIN UnitPlantDevisionView pd ON pb.devisionId = pd.DevisionID
                  LEFT JOIN PestControlStrategies pcs ON pb.plantId = pcs.plantId
                  LEFT JOIN GardenPlantPestControlManagement pm ON pcs.preventionId = pm.PreventionId
         WHERE pb.plantId = #{plantId}
     </select>
     <select id="countPlantsByDevision" resultType="java.util.Map">
         SELECT pd.FamilyName, COUNT(pb.plantId) as plantCount
-        FROM PlantDevision pd
+        FROM UnitPlantDevisionView pd
                  LEFT JOIN PlantsBasicInfo pb ON pd.DevisionID = pb.devisionId
         GROUP BY pd.FamilyName
     </select>
@@ -79,7 +79,7 @@
         SELECT pb.*,pi.*,pd.*
         FROM PlantsBasicInfo pb
         LEFT JOIN PlantImages pi ON pb.plantId = pi.plantId
-        LEFT JOIN PlantDevision pd ON pb.devisionId = pd.DevisionID
+        LEFT JOIN UnitPlantDevisionView pd ON pb.devisionId = pd.DevisionID
         WHERE 1=1
         <!-- 使用动态 SQL 进行条件判断 -->
         <if test="diseaseName != null"> AND pb.diseaseName = #{diseaseName} </if>
