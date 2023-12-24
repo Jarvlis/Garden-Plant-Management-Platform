@@ -42,7 +42,15 @@
         UpdateTime
     </sql>
 
-
+    <insert id="callInsertPlantDevision" keyColumn="DevisionID" keyProperty="devisionid" parameterType="org.plants.po.Plantdevision" useGeneratedKeys="true">
+        {CALL InsertPlantDevision(
+                #{genusspeciesid, mode=IN, jdbcType=INTEGER},
+                #{anothername, mode=IN, jdbcType=VARCHAR},
+                #{distributionareaid, mode=IN, jdbcType=INTEGER},
+                #{growingenvironment, mode=IN, jdbcType=VARCHAR},
+                #{creator, mode=IN, jdbcType=INTEGER}
+            )}
+    </insert>
     <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
