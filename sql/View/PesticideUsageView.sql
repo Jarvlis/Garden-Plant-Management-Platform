@@ -1,0 +1,2 @@
+CREATE  VIEW `PesticideUsageView` AS 
+select  `GardenPlantPestControlManagement`.`PesticideName` AS `PesticideName`,  `GardenPlantPestControlManagement`.`PesticideDosage` AS `PesticideDosage`,  `GardenPlantPestControlManagement`.`ValidityPeriod` AS `ValidityPeriod` from `GardenPlantPestControlManagement`

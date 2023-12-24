@@ -1,0 +1,7 @@
+DELIMITER //
+CREATE TRIGGER InsertUserTrigger AFTER INSERT ON User
+FOR EACH ROW
+BEGIN
+    INSERT INTO UserInsertionLog (userId) VALUES (NEW.userId);
+END //
+DELIMITER ;

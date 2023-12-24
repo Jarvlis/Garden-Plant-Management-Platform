@@ -1,0 +1,2 @@
+CREATE ALGORITHM=UNDEFINED DEFINER=`developer`@`%` SQL SECURITY DEFINER VIEW `IndicatorStatistics` AS 
+select  `I`.`IndicatorName` AS `IndicatorName`,  avg(`G`.`NumericResult`) AS `AverageValue`,  max(`G`.`NumericResult`) AS `MaxValue`,  min(`G`.`NumericResult`) AS `MinValue` from (`GardenPlantMonitoringManagement` `G`  join `Indicator` `I`  on ((`G`.`MonitoringIndicatorId` = `I`.`IndicatorId`))) where (`I`.`isnumeric` = 1) group by `I`.`IndicatorName`

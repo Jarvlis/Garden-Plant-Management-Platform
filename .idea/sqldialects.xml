@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/sql/create_table.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByPhoneProcedure.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByUsernameProcedure.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/InsertUserProcedure.sql" dialect="MySQL" />
   </component>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/sql/create_table.sql" dialect="MySQL" />
-  </component>
->>>>>>> 4f7ccf0d0619110d933afbc93fa5533a5672fefb
 </project>

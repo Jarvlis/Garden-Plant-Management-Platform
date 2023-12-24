@@ -33,7 +33,7 @@ public class TestEquipmentMapper {
     @Test
     public void testUpdate()
     {
-        Equipment equipment = equipmentMapper.selectByPrimaryKey(2L);
+        Equipment equipment = equipmentMapper.selectByPrimaryKey(1L);
         equipment.setEquipmentname("单一检测设备1");
         equipment.setUpdatetime(new Date());
         equipmentMapper.updateByPrimaryKey(equipment);
