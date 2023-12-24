@@ -68,7 +68,7 @@ public class TestUserMapper {
     @Test
     public void testUpdateByPrimaryKeySelective() {
         // 设置要更新的用户ID
-        int id = 8;
+        int id = 9;
 
         // 查询原始数据
         User original = userMapper.selectByPrimaryKey(id);
@@ -95,7 +95,7 @@ public class TestUserMapper {
     @Test
     public void testDeleteByPrimaryKey() {
         // 设置要删除的用户ID
-        int id = 8;
+        int id = 9;
 
         // 执行删除操作
         int result2 = userroleMapper.deleteByPrimaryKey(id);
