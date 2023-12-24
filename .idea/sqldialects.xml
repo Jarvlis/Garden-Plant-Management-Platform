@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/sql/PlantDevision.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/PlantDevisionProcedure.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/PlantDevisonTriggerlog.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/PlantDevisonView.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/PlantMaintenanceTriggerlog.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/PlantMaintenanceView.sql" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/sql/alterPlantDevision.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByPhoneProcedure.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByUsernameProcedure.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Procedure/InsertUserProcedure.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/Role.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/User.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/UserBasicInfo.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/UserIndex.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/UserRole.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/UserWithRoleView.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/User_AfterDeleteTrigger.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/sql/User_AfterInsertTrigger.sql" dialect="MySQL" />
+
     <file url="file://$PROJECT_DIR$/sql/create_table.sql" dialect="MySQL" />
   </component>
 </project>
