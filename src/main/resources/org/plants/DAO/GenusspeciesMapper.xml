@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.plants.DAO.GenusspeciesMapper">
+
+    <resultMap id="BaseResultMap" type="org.plants.po.Genusspecies">
+            <id property="genusspeciesid" column="GenusSpeciesID" jdbcType="INTEGER"/>
+            <result property="genusname" column="GenusName" jdbcType="VARCHAR"/>
+            <result property="speciesname" column="SpeciesName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        GenusSpeciesID,GenusName,SpeciesName
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from GenusSpecies
+        where  GenusSpeciesID = #{genusspeciesid,jdbcType=INTEGER} 
+    </select>
+    <select id="selectByAllTYPE" resultMap="BaseResultMap" parameterType="org.plants.po.Genusspecies">
+        select <include refid="Base_Column_List" /> from GenusSpecies
+        where GenusName=#{genusname,jdbcType=VARCHAR} and SpeciesName=#{speciesname,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from GenusSpecies
+        where  GenusSpeciesID = #{genusspeciesid,jdbcType=INTEGER} 
+    </delete>
+    <insert id="insert" keyColumn="GenusSpeciesID" keyProperty="genusspeciesid" parameterType="org.plants.po.Genusspecies" useGeneratedKeys="true">
+        insert into GenusSpecies
+        ( GenusSpeciesID,GenusName,SpeciesName
+        )
+        values (#{genusspeciesid,jdbcType=INTEGER},#{genusname,jdbcType=VARCHAR},#{speciesname,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="GenusSpeciesID" keyProperty="genusspeciesid" parameterType="org.plants.po.Genusspecies" useGeneratedKeys="true">
+        insert into GenusSpecies
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="genusspeciesid != null">GenusSpeciesID,</if>
+                <if test="genusname != null">GenusName,</if>
+                <if test="speciesname != null">SpeciesName,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="genusspeciesid != null">#{genusspeciesid,jdbcType=INTEGER},</if>
+                <if test="genusname != null">#{genusname,jdbcType=VARCHAR},</if>
+                <if test="speciesname != null">#{speciesname,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.plants.po.Genusspecies">
+        update GenusSpecies
+        <set>
+                <if test="genusname != null">
+                    GenusName = #{genusname,jdbcType=VARCHAR},
+                </if>
+                <if test="speciesname != null">
+                    SpeciesName = #{speciesname,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   GenusSpeciesID = #{genusspeciesid,jdbcType=INTEGER} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.plants.po.Genusspecies">
+        update GenusSpecies
+        set 
+            GenusName =  #{genusname,jdbcType=VARCHAR},
+            SpeciesName =  #{speciesname,jdbcType=VARCHAR}
+        where   GenusSpeciesID = #{genusspeciesid,jdbcType=INTEGER} 
+    </update>
+</mapper>

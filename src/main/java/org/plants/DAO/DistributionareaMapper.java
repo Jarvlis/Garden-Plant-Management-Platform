@@ -22,6 +22,8 @@ public interface DistributionareaMapper {
 
     int insertSelective(Distributionarea record);
 
+    Distributionarea selectByAllTYPE(Distributionarea record);
+
     Distributionarea selectByPrimaryKey(Long id);
     List<Distributionarea> selectAll();
     List<Distributionarea> selectByProvince(String province);
