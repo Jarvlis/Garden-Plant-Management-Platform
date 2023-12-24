@@ -1,0 +1,2 @@
+CREATE INDEX idx_MonitoringPlantId ON GardenPlantMonitoringManagement
+(MonitoringPlantId);
