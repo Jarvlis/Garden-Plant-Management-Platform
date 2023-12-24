@@ -1,0 +1,2 @@
+CREATE INDEX idx_PesticideName ON GardenPlantPestControlManagement
+(PesticideName);
