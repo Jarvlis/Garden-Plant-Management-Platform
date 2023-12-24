@@ -7,7 +7,5 @@
     <file url="file://$PROJECT_DIR$/sql/PlantDevisonView.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql/PlantMaintenanceTriggerlog.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql/PlantMaintenanceView.sql" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/sql/alterPlantDevision.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/create_table.sql" dialect="MySQL" />
   </component>
 </project>

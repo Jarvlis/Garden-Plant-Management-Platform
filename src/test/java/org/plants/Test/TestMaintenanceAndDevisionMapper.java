@@ -7,6 +7,7 @@ import org.plants.DAO.PlantmaintenanceMapper;
 import org.plants.Service.PLantDevisionService;
 import org.plants.config.AppConfig;
 import org.plants.po.Distributionarea;
+import org.plants.po.Plantdevision;
 import org.plants.po.Plantmaintenance;
 import org.plants.pojo.PlantDevisionUserDistributionArea;
 import org.plants.pojo.PlantMaintenance_User_PlantsBasicInfo;
@@ -112,9 +113,8 @@ public class TestMaintenanceAndDevisionMapper {
     }
     @Test
     public void testPlantdevisionMapper(){
-        plantdevisionMapper.deleteByPrimaryKey((long)1000);
+        plantdevisionMapper.deleteByAnothername("计算机班级");
         PlantDevisionUserDistributionArea platdevisionEND = new PlantDevisionUserDistributionArea();
-        platdevisionEND.setDevisionid(1000);
         platdevisionEND.setFamilyname("北京林业大学");
         platdevisionEND.setGenusname("信息学院");
         platdevisionEND.setSpeciesname("计算机科学与技术");
@@ -125,19 +125,24 @@ public class TestMaintenanceAndDevisionMapper {
         platdevisionEND.setGrowingenvironment("环境优美，景色迷人");
         platdevisionEND.setUserName("系统管理员");
         plantDevisionService.insertOnePlantDevision(platdevisionEND);
-
-        platdevisionEND.setFamilyname("北京林业大学new");
-        platdevisionEND.setGenusname("信息学院new");
-        platdevisionEND.setSpeciesname("计算机科学与技术new");
-        platdevisionEND.setAnothername("计算机班级");
-        platdevisionEND.setProvince("内蒙古new");
-        platdevisionEND.setCity("赤峰市new");
-        platdevisionEND.setCountry("元宝山区new");
-        platdevisionEND.setGrowingenvironment("环境优美，景色迷人new");
-        platdevisionEND.setUserName("系统管理员");
-        plantDevisionService.updateOnePlantDevision(platdevisionEND);
-
-
+        plantDevisionService.insertOnePlantDevision(platdevisionEND);
+        Plantdevision plantdevision = plantdevisionMapper.selectByAnothernamePlantdevisionsOnly("计算机班级");
+        if(plantdevision!=null){
+            System.out.println(plantdevision.toString());
+            platdevisionEND.setDevisionid(plantdevision.getDevisionid());
+            platdevisionEND.setFamilyname("北京林业大学new");
+            platdevisionEND.setGenusname("信息学院new");
+            platdevisionEND.setSpeciesname("计算机科学与技术new");
+            platdevisionEND.setAnothername("计算机班级");
+            platdevisionEND.setProvince("内蒙古new");
+            platdevisionEND.setCity("赤峰市new");
+            platdevisionEND.setCountry("元宝山区new");
+            platdevisionEND.setGrowingenvironment("环境优美，景色迷人new");
+            platdevisionEND.setUserName("系统管理员");
+            plantDevisionService.updateOnePlantDevision(platdevisionEND);
+            plantdevision = plantdevisionMapper.selectByAnothernamePlantdevisionsOnly("计算机班级");
+            System.out.println(plantdevision.toString());
+        }
     }
     @Test
     public void testDevisionView(){

@@ -33,7 +33,6 @@ public interface PlantmaintenanceMapper {
 
 
     //PlantmaintenanceView视图
-
     PlantMaintenance_User_PlantsBasicInfo selectByMaintenanceidToConnection(Long id);
     List<PlantMaintenance_User_PlantsBasicInfo> selectByAnothernameToConnection(String anothername);
     List<PlantMaintenance_User_PlantsBasicInfo> selectByExecutionplaceToConnection(String executionplace);

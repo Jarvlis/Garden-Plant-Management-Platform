@@ -17,20 +17,15 @@ import java.util.List;
 public interface DistributionareaMapper {
 
     int deleteByPrimaryKey(Long id);
-
     int insert(Distributionarea record);
-
     int insertSelective(Distributionarea record);
-
     Distributionarea selectByAllTYPE(Distributionarea record);
-
     Distributionarea selectByPrimaryKey(Long id);
     List<Distributionarea> selectAll();
     List<Distributionarea> selectByProvince(String province);
     List<Distributionarea> selectByCity(String city);
     List<Distributionarea> selectByCountry(String country);
     int updateByPrimaryKeySelective(Distributionarea record);
-
     int updateByPrimaryKey(Distributionarea record);
 
 }

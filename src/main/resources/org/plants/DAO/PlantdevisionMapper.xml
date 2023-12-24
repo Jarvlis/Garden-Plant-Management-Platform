@@ -153,6 +153,10 @@
         delete from PlantDevision
         where  DevisionID = #{devisionid,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteByAnothername" parameterType="java.lang.String">
+        delete from PlantDevision
+        where  AnotherName = #{anothername,jdbcType=VARCHAR}
+    </delete>
 
 
     <insert id="insertPlantDevision" keyColumn="DevisionID" keyProperty="devisionid" parameterType="org.plants.po.Plantdevision" useGeneratedKeys="true">
@@ -235,9 +239,6 @@
     <update id="updateByPrimaryKey" parameterType="org.plants.po.Plantdevision">
         update PlantDevision
         set
-            FamilyName =  #{familyname,jdbcType=VARCHAR},
-            GenusName =  #{genusname,jdbcType=VARCHAR},
-            SpeciesName =  #{speciesname,jdbcType=VARCHAR},
             AnotherName =  #{anothername,jdbcType=VARCHAR},
             DistributionAreaID =  #{distributionareaid,jdbcType=INTEGER},
             GrowingEnvironment =  #{growingenvironment,jdbcType=VARCHAR},

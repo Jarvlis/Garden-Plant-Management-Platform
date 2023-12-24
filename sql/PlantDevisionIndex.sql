@@ -8,6 +8,8 @@ create index Creator
 
 create index DistributionAreaID
     on plants.PlantDevision (DistributionAreaID);
+
+
 #科属表
 create index idx_GenusName
     on plants.FamilyGenus (GenusName);

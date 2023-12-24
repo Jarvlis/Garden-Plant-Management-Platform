@@ -17,23 +17,16 @@ import java.util.List;
 @Mapper
 @Repository
 public interface PlantdevisionMapper {
-
     int deleteByPrimaryKey(Long id);
-
-    //int insert(Plantdevision record);
+    int deleteByAnothername(String name);
     int insertPlantDevision(Plantdevision record);
-    //int insertSelective(Plantdevision record);
     int callInsertPlantDevision(Plantdevision record);
     Plantdevision selectByPrimaryKey(Long id);
     List<Plantdevision> selectAll();
     List<Plantdevision> selectByAnothernamePlantdevisions(String anothername);
     Plantdevision selectByAnothernamePlantdevisionsOnly(String anothername);
-//    List<Plantdevision> selectByFamilynamePlantdevisions(String familyname);
-//    List<Plantdevision> selectByGenusnamePlantdevisions(String genusname);
-//    List<Plantdevision> selectBySpeciesnamePlantdevisions(String speciesname);
     List<Plantdevision> selectByGrowingenvironmentPlantdevisions(String growingenvironment);
     int updateByPrimaryKeySelective(Plantdevision record);
-
     int updateByPrimaryKey(Plantdevision record);
     int updateByAnothernamePlantdevisionsOnly(Plantdevision record);
     /*
@@ -41,7 +34,6 @@ public interface PlantdevisionMapper {
      */
     //ID查询
     PlantDevisionUserDistributionArea selectByDevisionidToConnection(Long id);
-
     //名查询
     List<PlantDevisionUserDistributionArea> selectByFamilynameToConnection(String familyname);
     List<PlantDevisionUserDistributionArea> selectByGenusnameToConnection(String genusname);
@@ -50,12 +42,9 @@ public interface PlantdevisionMapper {
     PlantDevisionUserDistributionArea selectByAnothernameToTotal(String anothername);
     //区域查询
     List<PlantDevisionUserDistributionArea> selectByProvinceToConnection(String province);
-
     List<PlantDevisionUserDistributionArea> selectByCityToConnection(String city);
     List<PlantDevisionUserDistributionArea> selectByCountryToConnection(String country);
     List<PlantDevisionUserDistributionArea> selectByGrowingenvironmentToConnection(String growingenvironment);
     List<PlantDevisionUserDistributionArea> selectAllToConnection();
-
-
 
 }
