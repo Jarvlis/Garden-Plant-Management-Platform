@@ -29,7 +29,7 @@ public class TestIndicatorMapper {
     @Test
     void testUpdate()
     {
-        Indicator indicator = indicatorMapper.selectByPrimaryKey(3L);
+        Indicator indicator = indicatorMapper.selectByPrimaryKey(1L);
         indicator.setIsnumeric(1);
         indicatorMapper.updateByPrimaryKey(indicator);
     }

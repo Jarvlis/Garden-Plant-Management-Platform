@@ -26,8 +26,6 @@ e
 .src/main/java/org/plants/config/AppConfig.java,c\4\c433b830299980095799d4f94d9b1ae09f3cd6e9
 a
 1src/main/java/org/plants/config/MapperConfig.java,6\6\662b4a6656703b32da62adcebe96b1b881ac1370
-D
-sql/Distribution.sql,4\c\4cfbaefef70ae9473850630d4b0ee9ffeb5ef292
 E
 sql/PlantDevision.sql,8\8\8810e744be6dab8419c78f609fe579fa80bc000b
 L
@@ -52,10 +50,6 @@ l
 <src/test/java/org/plants/Test/TestPlantsBasicInfoMapper.java,2\9\297cb92279f8c3fd6f585c799dc09642a23063c1
 H
 sql/UserWithRoleView.sql,b\4\b442f7d00c642977ae7cff7708f8b562c0b6b17a
-E
-sql/UserBasicInfo.sql,d\0\d08eccc1ecf88a8d31ab9dc036b45cb81744c4e9
-J
-sql/alterPlantDevision.sql,d\7\d7cc52eb9af6d15335e81c796253a2a224f697fb
 <
 sql/Role.sql,2\5\25644b015fa2dba2637355268db286503e4cf045
 @
@@ -82,3 +76,19 @@ O
 sql/User_AfterInsertTrigger.sql,3\d\3d41aa9e130f3a9113ba8186c1d6dc31ff5d9907
 O
 sql/User_AfterDeleteTrigger.sql,8\7\87be04faa25eac7c7ae3670093a8ec44475c6120
+I
+sql/UserBasicInfoView.sql,8\f\8f6b28874fa681db7f8700704929cfdceac9627b
+j
+:src/main/java/org/plants/Service/PLantDevisionService.java,7\d\7d3ccfac43aa444e5cd95f727d4dce96a1c0a083
+Š
+Zsrc/test/java/org/plants/Test/MonitoringModelTest/TestGardenPlantMonitoringManagement.java,c\0\c0dda7496b0ba9969c3ce3b05d9f3cdc3b559502
+‘
+asrc/test/java/org/plants/Test/MonitoringModelTest/TestGardenPlantPestControlManagementMapper.java,5\d\5d416f7dbcfd29cf11a34d6e5b0e99efa4e7b2ed
+z
+Jsrc/test/java/org/plants/Test/MonitoringModelTest/TestIndicatorMapper.java,8\d\8dd25ada460e375fe0097d9861ec8f062376c21f
+
+Osrc/test/java/org/plants/Test/MonitoringModelTest/TestPlantIndicatorMapper.java,f\b\fbf7b54145caf7e6a7ade8b54e63e52ba1f893a0
+W
+'sql/Trigger/User_AfterDeleteTrigger.sql,e\5\e5ff3fcc40a6a2d3347024ab389c9db9c14d6000
+W
+'sql/Trigger/User_AfterInsertTrigger.sql,7\f\7f5e6c9df194b192cc0837e340fe71f5244cf352

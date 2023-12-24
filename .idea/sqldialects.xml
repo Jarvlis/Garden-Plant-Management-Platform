@@ -4,15 +4,5 @@
     <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByPhoneProcedure.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql/Procedure/GetUserByUsernameProcedure.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/sql/Procedure/InsertUserProcedure.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/Role.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/User.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/UserBasicInfo.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/UserIndex.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/UserRole.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/UserWithRoleView.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/User_AfterDeleteTrigger.sql" dialect="MySQL" />
-    <file url="file://$PROJECT_DIR$/sql/User_AfterInsertTrigger.sql" dialect="MySQL" />
-
-    <file url="file://$PROJECT_DIR$/sql/create_table.sql" dialect="MySQL" />
   </component>
 </project>

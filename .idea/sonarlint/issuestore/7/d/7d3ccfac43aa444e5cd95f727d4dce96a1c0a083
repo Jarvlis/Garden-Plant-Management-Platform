@@ -1,0 +1,12 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ØË²¢
+Y
+java:S1854-"CRemove this useless assignment to local variable "familyGenusflag".(ıËÖ
+U
+java:S6213":Rename this variable to not match a restricted identifier.(²†¼—ùÿÿÿÿ
+V	java:S125B"<This block of commented-out lines of code should be removed.(µñúÿÿÿÿ
+U
+java:S6213F":Rename this variable to not match a restricted identifier.(äÜ‚øÿÿÿÿ
+Q	java:S125G"<This block of commented-out lines of code should be removed.(ÔÀ«Ì
+H
+java:S1068"2Remove this unused "userroleMapper" private field.(ò¡Éı
