@@ -139,13 +139,16 @@ public class TestPlantsBasicInfoMapper {
 
     @Test
     public void testDeleteByPrimaryKey() {
-        // 设置要删除的植物 ID
+// 设置要删除的植物 ID
         Long id = 11L;
 
-        // 执行删除操作
+// 执行删除操作
         int result = plantsBasicInfoMapper.deleteByPrimaryKey(id);
-
-        // 验证结果
+        Plantsbasicinfo plant = new Plantsbasicinfo();
+        plant.setPlantid(Math.toIntExact(id));
+// 重新插入原植物
+        plantsBasicInfoMapper.insert(plant);
+// 验证结果
         assertEquals(1, result);
     }
 
