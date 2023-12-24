@@ -1,16 +1,23 @@
 package org.plants.Test;
 
+import org.apache.ibatis.annotations.Param;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.plants.DAO.PestcontrolstrategiesMapper;
 import org.plants.DAO.PlantimagesMapper;
 import org.plants.DAO.PlantsbasicinfoMapper;
 import org.plants.config.AppConfig;
+import org.plants.po.Plantimages;
 import org.plants.po.Plantsbasicinfo;
 import org.plants.pojo.PlantsBasicInfoPro;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import javax.annotation.Resource;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,7 +62,7 @@ public class TestPlantsBasicInfoMapper {
         Map<String, Object> params = new HashMap<>();
 //        params.put("diseaseName", "SomeDisease");
         params.put("divisionId", 1);
-//        params.put("familyName","白花丹科");
+        params.put("familyName","白花丹科");
         // Execute the query to search plants
         List<PlantsBasicInfoPro> result = plantsBasicInfoMapper.searchPlants(params);
 
@@ -111,7 +118,7 @@ public class TestPlantsBasicInfoMapper {
     @Test
     public void testUpdateByPrimaryKeySelective() {
         // 设置要更新的植物 ID
-        Long id = 10L;
+        Long id = 1L;
 
         // 查询原始数据
         Plantsbasicinfo original = plantsBasicInfoMapper.selectByPrimaryKey(id);
@@ -133,7 +140,7 @@ public class TestPlantsBasicInfoMapper {
     @Test
     public void testDeleteByPrimaryKey() {
         // 设置要删除的植物 ID
-        Long id = 10L;
+        Long id = 11L;
 
         // 执行删除操作
         int result = plantsBasicInfoMapper.deleteByPrimaryKey(id);
@@ -167,5 +174,4 @@ public class TestPlantsBasicInfoMapper {
             System.out.println("病虫害名称: " + pestName + ", 植物数量: " + plantCount);
         }
     }
-
 }

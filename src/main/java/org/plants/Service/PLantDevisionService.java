@@ -54,20 +54,18 @@ public class PLantDevisionService {
             genusspeciesflag=genusspeciesMapper.selectByAllTYPE(genusspecies);
         }
 
-        //UserWithRole user = userroleMapper.selectUserRoleByUsername(record.getUserName());
+        UserWithRole user = userMapper.selectUserRoleByUsername(record.getUserName());
 
-
-        int userid = 1;
 
         Plantdevision plantdevision = new Plantdevision();
         plantdevision.setDevisionid(record.getDevisionid());
         plantdevision.setGenusspeciesid(genusspeciesflag.getGenusspeciesid());
         plantdevision.setAnothername(record.getAnothername());
         plantdevision.setGrowingenvironment(record.getGrowingenvironment());
-        plantdevision.setCreator(userid);
+        plantdevision.setCreator(user.getUserid());
         //plantdevision.setCreator(user.getId());
         plantdevision.setDistributionareaid(devisionflag.getDistributionareaid());
-        plantdevisionMapper.insertPlantDevision(plantdevision);
+        plantdevisionMapper.callInsertPlantDevision(plantdevision);
     }
     public void updateOnePlantDevision(PlantDevisionUserDistributionArea record){
 //        PlantDevisionUserDistributionArea plantDevisionUserDistributionArea = plantdevisionMapper.selectByAnothernameToTotal(record.getAnothername());

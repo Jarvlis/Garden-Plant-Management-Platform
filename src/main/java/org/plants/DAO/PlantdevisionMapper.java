@@ -23,7 +23,7 @@ public interface PlantdevisionMapper {
     //int insert(Plantdevision record);
     int insertPlantDevision(Plantdevision record);
     //int insertSelective(Plantdevision record);
-
+    int callInsertPlantDevision(Plantdevision record);
     Plantdevision selectByPrimaryKey(Long id);
     List<Plantdevision> selectAll();
     List<Plantdevision> selectByAnothernamePlantdevisions(String anothername);
