@@ -1,19 +1,3 @@
--- CREATE TABLE Users (
---                        userId INT PRIMARY KEY AUTO_INCREMENT COMMENT '用户ID',
---                        userName VARCHAR(80) NOT NULL UNIQUE COMMENT '用户名',
---                        userPassword VARCHAR(50) NOT NULL COMMENT '密码',
---                        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
---                        updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
--- ) COMMENT '用户表';
---
--- CREATE TABLE UserRoles (
---                            userRoleId INT PRIMARY KEY AUTO_INCREMENT COMMENT '用户角色ID',
---                            userId INT COMMENT '用户ID',
---                            roleId INT COMMENT '角色ID',
---                            FOREIGN KEY (userId) REFERENCES User(userId),
---                            FOREIGN KEY (roleId) REFERENCES Role(roleId)
--- ) COMMENT '用户角色表';
-
 CREATE TABLE Family_Genus
 (
     Family_GenusID INTEGER AUTO_INCREMENT PRIMARY KEY,
@@ -33,3 +17,43 @@ CREATE TABLE Genus_Species
     FOREIGN KEY (GenusName) REFERENCES Family_Genus(GenusName)
 )
     comment '属种表';
+
+create table if not exists Role
+(
+    roleId   int auto_increment comment '角色ID'
+        primary key,
+    roleName varchar(80) not null comment '角色名',
+    constraint roleName
+        unique (roleName)
+)
+    comment '角色表';
+
+create table if not exists User
+(
+    userId       int auto_increment comment '用户ID'
+        primary key,
+    userName     varchar(80)                         not null comment '用户名',
+    userPassword varchar(50)                         not null comment '密码',
+    createdAt    timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '创建时间',
+    updatedAt    timestamp default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    phoneNumber  varchar(40)                         not null comment '手机号码',
+    userStatus   tinyint   default 0                 not null comment '用户状态 0 - 正常 1 - 封号',
+    constraint phoneNumber
+        unique (phoneNumber) comment '用户手机号索引',
+    constraint userName
+        unique (userName)
+)
+    comment '用户表';
+
+create table if not exists UserRole
+(
+    userRoleId int auto_increment comment '用户角色ID'
+        primary key,
+    userId     int null comment '用户ID',
+    roleId     int null comment '角色ID',
+    constraint UserRole_ibfk_1
+        foreign key (userId) references User (userId),
+    constraint UserRole_ibfk_2
+        foreign key (roleId) references Role (roleId)
+)
+    comment '用户角色表';
